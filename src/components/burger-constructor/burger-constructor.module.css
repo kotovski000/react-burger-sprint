@@ -1,0 +1,57 @@
+.constructor {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    gap: 16px;
+}
+
+.scrollableList {
+    max-height: 464px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.scrollableList::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollableList::-webkit-scrollbar-track {
+    background: #2F2F37;
+}
+
+.scrollableList::-webkit-scrollbar-thumb {
+    background: #8585AD;
+}
+
+.draggableItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bun {
+    margin-left: 32px;
+}
+
+.fixedSize {
+    width: 536px;
+    flex: none;
+}
+
+.ingredient {
+    flex-grow: 1;
+}
+
+.total {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+}

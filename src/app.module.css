@@ -1,0 +1,14 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    background-color: #131316;
+    color: #F2F2F3;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
