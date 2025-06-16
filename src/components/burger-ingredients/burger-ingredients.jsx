@@ -2,7 +2,8 @@ import React, { useState, useMemo } from 'react';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import IngredientCard from './ingredient-card';
 import styles from './burger-ingredients.module.css';
-import PropTypes from 'prop-types';
+import { IngredientsArrayType } from '../../utils/types';
+
 
 const BurgerIngredients = ({ ingredients }) => {
     const [currentTab, setCurrentTab] = useState('bun');
@@ -63,16 +64,7 @@ const BurgerIngredients = ({ ingredients }) => {
 };
 
 BurgerIngredients.propTypes = {
-    ingredients: PropTypes.arrayOf(
-        PropTypes.shape({
-            _id: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            type: PropTypes.oneOf(['bun', 'sauce', 'main']).isRequired,
-            price: PropTypes.number.isRequired,
-            image: PropTypes.string.isRequired,
-            count: PropTypes.number
-        })
-    ).isRequired
+    ingredients: IngredientsArrayType
 };
 
 export default BurgerIngredients;

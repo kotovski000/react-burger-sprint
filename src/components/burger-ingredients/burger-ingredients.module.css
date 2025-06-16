@@ -7,7 +7,8 @@
 }
 
 .ingredientsContainer {
-    height: 664px;
+    max-height: calc(100vh - 300px);
+    min-height: 664px;
     overflow-y: auto;
     scroll-behavior: smooth;
 }

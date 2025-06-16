@@ -1,7 +1,8 @@
 import React from 'react';
 import { ConstructorElement, Button, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './burger-constructor.module.css';
-import PropTypes from 'prop-types';
+import { IngredientsArrayType } from '../../utils/types';
+
 
 const BurgerConstructor = ({ ingredients }) => {
     const buns = ingredients.filter(ing => ing.type === 'bun');
@@ -27,7 +28,7 @@ const BurgerConstructor = ({ ingredients }) => {
             {/* Список начинок и соусов + прокрутка */}
             <div className={`${styles.scrollableList} custom-scroll`}>
                 {mains.map((item, index) => (
-                    <div key={`${item._id}_${index}`} className={styles.draggableItem}>
+                    <div key={item._id} className={styles.draggableItem}>
                         <DragIcon type="primary" />
                         <ConstructorElement
                             text={item.name}
@@ -71,15 +72,7 @@ const BurgerConstructor = ({ ingredients }) => {
 };
 
 BurgerConstructor.propTypes = {
-    ingredients: PropTypes.arrayOf(
-        PropTypes.shape({
-            _id: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            type: PropTypes.oneOf(['bun', 'sauce', 'main']).isRequired,
-            price: PropTypes.number.isRequired,
-            image: PropTypes.string.isRequired
-        })
-    ).isRequired
+    ingredients: IngredientsArrayType
 };
 
 export default BurgerConstructor;

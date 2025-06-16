@@ -6,7 +6,8 @@
 }
 
 .scrollableList {
-    max-height: 464px;
+    max-height: calc(100vh - 600px);
+    min-height: 464px;
     overflow-y: auto;
     scroll-behavior: smooth;
     display: flex;

@@ -1,5 +1,6 @@
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './app-header.module.css';
+import NavItem from './nav-item/nav-item';
 
 const AppHeader = () => {
     return (
@@ -11,11 +12,13 @@ const AppHeader = () => {
                         <NavItem
                             icon={<BurgerIcon type="primary" />}
                             text="Конструктор"
-                            active={true}
+                            to="/"
+                            exact
                         />
                         <NavItem
                             icon={<ListIcon type="secondary" />}
                             text="Лента заказов"
+                            to="/feed"
                         />
                     </div>
 
@@ -29,22 +32,12 @@ const AppHeader = () => {
                         <NavItem
                             icon={<ProfileIcon type="secondary" />}
                             text="Личный кабинет"
+                            to="/profile"
                         />
                     </div>
                 </nav>
             </div>
         </header>
-    );
-};
-
-const NavItem = ({ icon, text, active = false }) => {
-    return (
-        <div className={`${styles.navItem} pl-5 pr-5 pb-4 pt-4`}>
-            {icon}
-            <span className={`text text_type_main-default ml-2 ${active ? '' : 'text_color_inactive'}`}>
-        {text}
-      </span>
-        </div>
     );
 };
 
