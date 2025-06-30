@@ -11,7 +11,7 @@
     opacity: 0.8;
 }
 
-.active {
+.active, .activeText {
     color: #F2F2F3;
 }
 
