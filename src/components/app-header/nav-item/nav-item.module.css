@@ -1,0 +1,20 @@
+.navItem {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 40px;
+    text-decoration: none;
+    color: #8585AD;
+}
+
+.navItem:hover {
+    opacity: 0.8;
+}
+
+.active {
+    color: #F2F2F3;
+}
+
+.active svg {
+    fill: #F2F2F3;
+}
