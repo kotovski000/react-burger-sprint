@@ -3,17 +3,13 @@ import { ConstructorElement, Button, CurrencyIcon, DragIcon } from '@ya.praktiku
 import styles from './burger-constructor.module.css';
 import { IngredientsArrayType } from '../../utils/types';
 
-
-const BurgerConstructor = ({ ingredients }) => {
+const BurgerConstructor = ({ ingredients, onOrderClick }) => {
     const buns = ingredients.filter(ing => ing.type === 'bun');
     const mains = ingredients.filter(ing => ing.type !== 'bun');
-
-    // Общая стоимость
     const totalPrice = ingredients.reduce((sum, item) => sum + item.price, 0);
 
     return (
         <section className={`${styles.constructor} mt-25 pl-4 pr-4`}>
-            {/* Верхняя булка */}
             {buns.length > 0 && (
                 <ConstructorElement
                     type="top"
@@ -25,9 +21,8 @@ const BurgerConstructor = ({ ingredients }) => {
                 />
             )}
 
-            {/* Список начинок и соусов + прокрутка */}
             <div className={`${styles.scrollableList} custom-scroll`}>
-                {mains.map((item, index) => (
+                {mains.map((item) => (
                     <div key={item._id} className={styles.draggableItem}>
                         <DragIcon type="primary" />
                         <ConstructorElement
@@ -40,7 +35,6 @@ const BurgerConstructor = ({ ingredients }) => {
                 ))}
             </div>
 
-            {/* Нижняя булка */}
             {buns.length > 0 && (
                 <ConstructorElement
                     type="bottom"
@@ -52,7 +46,6 @@ const BurgerConstructor = ({ ingredients }) => {
                 />
             )}
 
-            {/* Итоговая строка с ценой и кнопкой */}
             <div className={`${styles.total} mt-10`}>
                 <div className={`${styles.price} mr-10`}>
                     <span className="text text_type_digits-medium mr-2">{totalPrice}</span>
@@ -61,7 +54,7 @@ const BurgerConstructor = ({ ingredients }) => {
                 <Button
                     type="primary"
                     size="large"
-                    htmlType="button"
+                    onClick={onOrderClick}
                     disabled={buns.length === 0}
                 >
                     Оформить заказ
@@ -74,5 +67,4 @@ const BurgerConstructor = ({ ingredients }) => {
 BurgerConstructor.propTypes = {
     ingredients: IngredientsArrayType
 };
-
 export default BurgerConstructor;

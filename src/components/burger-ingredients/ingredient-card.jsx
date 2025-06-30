@@ -3,10 +3,9 @@ import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-c
 import styles from './burger-ingredients.module.css';
 import { IngredientType } from '../../utils/types';
 
-
-const IngredientCard = ({ item }) => {
+const IngredientCard = ({ item, onClick }) => {
     return (
-        <div className={styles.ingredientCard}>
+        <div className={styles.ingredientCard} onClick={onClick}>
             {item.count > 0 && (
                 <Counter count={item.count} size="default" />
             )}
@@ -22,6 +21,6 @@ const IngredientCard = ({ item }) => {
 
 IngredientCard.propTypes = {
     item: IngredientType.isRequired
-};
+}
 
 export default IngredientCard;

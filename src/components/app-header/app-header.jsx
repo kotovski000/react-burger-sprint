@@ -10,10 +10,11 @@ const AppHeader = () => {
                     {/* Левый блок навигации */}
                     <div className={`${styles.navBlock} ${styles.left}`}>
                         <NavItem
-                            icon={<BurgerIcon type="primary" />}
+                            icon={<BurgerIcon type="secondary" />}
                             text="Конструктор"
                             to="/"
                             exact
+                            isActive  // пропс для активного состояния
                         />
                         <NavItem
                             icon={<ListIcon type="secondary" />}
