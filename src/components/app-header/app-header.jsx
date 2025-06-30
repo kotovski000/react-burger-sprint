@@ -14,7 +14,7 @@ const AppHeader = () => {
                             text="Конструктор"
                             to="/"
                             exact
-                            isActive  // Добавляем пропс для активного состояния
+                            isActive  // пропс для активного состояния
                         />
                         <NavItem
                             icon={<ListIcon type="secondary" />}
