@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import IngredientCard from './ingredient-card';
 import styles from './burger-ingredients.module.css';
@@ -6,6 +6,13 @@ import { IngredientsArrayType } from '../../utils/types';
 
 const BurgerIngredients = ({ ingredients, onIngredientClick }) => {
     const [currentTab, setCurrentTab] = useState('bun');
+    const containerRef = useRef(null);
+
+    const categories = useMemo(() => [
+        { type: 'bun', title: 'Булки' },
+        { type: 'sauce', title: 'Соусы' },
+        { type: 'main', title: 'Начинки' }
+    ], []);
 
     const groupedIngredients = useMemo(() => {
         const groups = {
@@ -21,11 +28,37 @@ const BurgerIngredients = ({ ingredients, onIngredientClick }) => {
         return groups;
     }, [ingredients]);
 
-    const categories = [
-        { type: 'bun', title: 'Булки' },
-        { type: 'sauce', title: 'Соусы' },
-        { type: 'main', title: 'Начинки' }
-    ];
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const categoryElements = categories.map(({ type }) =>
+            document.getElementById(type)
+        ).filter(Boolean);
+
+        const handleScroll = () => {
+            const containerTop = container.getBoundingClientRect().top;
+            let closestCategory = null;
+            let smallestDistance = Infinity;
+
+            categoryElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const distance = Math.abs(elementTop - containerTop);
+
+                if (distance < smallestDistance) {
+                    smallestDistance = distance;
+                    closestCategory = element.id;
+                }
+            });
+
+            if (closestCategory && closestCategory !== currentTab) {
+                setCurrentTab(closestCategory);
+            }
+        };
+
+        container.addEventListener('scroll', handleScroll);
+        return () => container.removeEventListener('scroll', handleScroll);
+    }, [ingredients, currentTab, categories]);
 
     if (ingredients.length === 0) {
         return <section className={styles.section}>No ingredients available</section>;
@@ -48,7 +81,10 @@ const BurgerIngredients = ({ ingredients, onIngredientClick }) => {
                 ))}
             </div>
 
-            <div className={styles.ingredientsContainer}>
+            <div
+                className={styles.ingredientsContainer}
+                ref={containerRef}
+            >
                 {categories.map(({ type, title }) => (
                     groupedIngredients[type].length > 0 && (
                         <div key={type} className={styles.ingredientsSection} id={type}>
