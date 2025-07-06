@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ConstructorElement, Button, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './burger-constructor.module.css';
 import { IngredientsArrayType } from '../../utils/types';
 
 const BurgerConstructor = ({ ingredients, onOrderClick }) => {
     const buns = ingredients.filter(ing => ing.type === 'bun');
-    const mains = ingredients.filter(ing => ing.type !== 'bun');
-    const totalPrice = ingredients.reduce((sum, item) => sum + item.price, 0);
+    const sauces = ingredients.filter(ing => ing.type === 'sauce');
+    const mains = ingredients.filter(ing => ing.type === 'main');
+
+    const totalPrice = useMemo(() => {
+        const bunPrice = buns.length > 0 ? buns[0].price * 2 : 0;
+        const saucesPrice = sauces.reduce((sum, item) => sum + item.price, 0);
+        const mainsPrice = mains.reduce((sum, item) => sum + item.price, 0);
+        return bunPrice + saucesPrice + mainsPrice;
+    }, [buns, sauces, mains]);
 
     return (
         <section className={`${styles.constructor} mt-25 pl-4 pr-4`}>
@@ -22,6 +29,18 @@ const BurgerConstructor = ({ ingredients, onOrderClick }) => {
             )}
 
             <div className={`${styles.scrollableList} custom-scroll`}>
+                {sauces.map((item) => (
+                    <div key={item._id} className={styles.draggableItem}>
+                        <DragIcon type="primary" />
+                        <ConstructorElement
+                            text={item.name}
+                            price={item.price}
+                            thumbnail={item.image}
+                            extraClass={styles.ingredient}
+                        />
+                    </div>
+                ))}
+
                 {mains.map((item) => (
                     <div key={item._id} className={styles.draggableItem}>
                         <DragIcon type="primary" />
