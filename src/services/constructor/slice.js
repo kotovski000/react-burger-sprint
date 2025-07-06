@@ -28,10 +28,10 @@ const constructorSlice = createSlice({
             state.ingredients.splice(dragIndex, 1);
             state.ingredients.splice(hoverIndex, 0, dragItem);
         },
-        // clearConstructor: (state) => {
-        //     state.bun = null;
-        //     state.ingredients = [];
-        // }
+        clearConstructor: (state) => {
+            state.bun = null;
+            state.ingredients = [];
+        }
     }
 });
 
@@ -39,7 +39,7 @@ export const {
     addIngredient,
     removeIngredient,
     moveIngredient,
-    // clearConstructor
+    clearConstructor
 } = constructorSlice.actions;
 
 export default constructorSlice.reducer;

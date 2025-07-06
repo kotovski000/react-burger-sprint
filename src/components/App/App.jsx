@@ -15,6 +15,7 @@ import {
     clearIngredientDetails
 } from '../../services/ingredient-details/slice';
 import { clearOrder } from '../../services/order/slice';
+import {clearConstructor} from "../../services/constructor/slice";
 
 function App() {
     const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function App() {
     const closeModal = () => {
         dispatch(clearIngredientDetails());
         dispatch(clearOrder());
+        dispatch(clearConstructor());
     };
 
     if (loading) return <div className={styles.app}>Loading...</div>;

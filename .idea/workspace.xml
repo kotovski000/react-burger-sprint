@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cdfa1bb-d4f4-4be4-85c4-546ea9914183" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-header/app-header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/app-header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-header/nav-item/nav-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/nav-item/nav-item.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/ingredient-card.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/ingredient-card.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ingredient-details/ingredient-details.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ingredient-details/ingredient-details.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order-details/order-details.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order-details/order-details.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/constructor/slice.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/ingredients/slice.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/modal/slice.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/order/slice.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types.js" afterDir="false" />
-    </list>
+    <list default="true" id="5cdfa1bb-d4f4-4be4-85c4-546ea9914183" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
