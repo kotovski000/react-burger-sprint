@@ -1,14 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { API_URL } from '../../utils/constants';
+import { request } from '../../utils/api';
 
 export const fetchIngredients = createAsyncThunk(
     'ingredients/fetchIngredients',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await fetch(`${API_URL}/ingredients`);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const data = await response.json();
-            if (!data.success) throw new Error('API request was not successful');
+            const data = await request('/ingredients');
             return data.data;
         } catch (error) {
             return rejectWithValue(error.message);

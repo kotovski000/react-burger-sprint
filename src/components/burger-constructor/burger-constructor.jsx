@@ -101,11 +101,11 @@ const BurgerConstructor = () => {
                     <CurrencyIcon type="primary" />
                 </div>
                 <Button
+                    htmlType="button"
                     type="primary"
                     size="large"
                     onClick={handleOrderClick}
                     disabled={!bun || orderLoading}
-                    data-testid="order-button"
                 >
                     {orderLoading ? 'Оформляем...' : 'Оформить заказ'}
                 </Button>

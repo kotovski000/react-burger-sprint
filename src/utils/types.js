@@ -20,8 +20,8 @@ import PropTypes from 'prop-types';
 export const NavItemType = {
     icon: PropTypes.node.isRequired,
     text: PropTypes.string.isRequired,
-    to: PropTypes.string.isRequired,
-    exact: PropTypes.bool,
+    // to: PropTypes.string.isRequired,
+    // exact: PropTypes.bool,
     isActive: PropTypes.bool
 
 };

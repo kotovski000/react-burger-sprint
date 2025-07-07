@@ -1,28 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { API_URL } from '../../utils/constants';
+import { request } from '../../utils/api';
 
 export const createOrder = createAsyncThunk(
     'order/createOrder',
     async (ingredients, { rejectWithValue }) => {
         try {
-            const response = await fetch(`${API_URL}/orders`, {
+            const data = await request('/orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ ingredients })
             });
-
-            if (!response.ok) {
-                const error = await response.json();
-                throw new Error(error.message || 'Failed to create order');
-            }
-
-            const data = await response.json();
-            if (!data.success) {
-                throw new Error('Failed to create order');
-            }
-
             return data.order.number;
         } catch (error) {
             return rejectWithValue(error.message);

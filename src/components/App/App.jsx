@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -20,7 +20,6 @@ import {clearConstructor} from "../../services/constructor/slice";
 function App() {
     const dispatch = useDispatch();
     const {
-        items: ingredients,
         loading,
         error
     } = useSelector((state) => state.ingredients);
@@ -35,14 +34,28 @@ function App() {
         dispatch(fetchIngredients());
     }, [dispatch]);
 
+    const [modalType, setModalType] = useState(null)
+
     const handleIngredientClick = (ingredient) => {
         dispatch(setIngredientDetails(ingredient));
+        setModalType('ingredient');
     };
+
+    useEffect(() => {
+        if (orderNumber) setModalType('order');
+    }, [orderNumber]);
+
+    useEffect(() => {
+        if (orderError) setModalType('error');
+    }, [orderError]);
 
     const closeModal = () => {
         dispatch(clearIngredientDetails());
         dispatch(clearOrder());
-        dispatch(clearConstructor());
+        if (modalType === 'order') {
+            dispatch(clearConstructor());
+        }
+        setModalType(null);
     };
 
     if (loading) return <div className={styles.app}>Loading...</div>;
@@ -53,33 +66,31 @@ function App() {
             <AppHeader />
             <main className={styles.main}>
                 <DndProvider backend={HTML5Backend}>
-                    <BurgerIngredients
-                        ingredients={ingredients}
-                        onIngredientClick={handleIngredientClick}
-                    />
+                    <BurgerIngredients onIngredientClick={handleIngredientClick} />
                     <BurgerConstructor />
                 </DndProvider>
             </main>
 
-            {selectedIngredient && (
+            {selectedIngredient && modalType === 'ingredient' && (
                 <Modal title="Детали ингредиента" onClose={closeModal}>
                     <IngredientDetails />
                 </Modal>
             )}
 
-            {orderNumber && (
+            {orderNumber && modalType === 'order' && (
                 <Modal title="" onClose={closeModal}>
                     <OrderDetails />
                 </Modal>
             )}
 
-            {orderError && (
+            {orderError && modalType === 'error' && (
                 <Modal title="Ошибка" onClose={closeModal}>
                     <div className="text text_type_main-default">
                         Произошла ошибка при создании заказа: {orderError}
                     </div>
                 </Modal>
             )}
+
         </div>
     );
 }

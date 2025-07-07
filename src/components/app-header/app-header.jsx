@@ -12,7 +12,6 @@ const AppHeader = () => {
                         <NavItem
                             icon={<BurgerIcon type="secondary" />}
                             text="Конструктор"
-
                             isActive  // пропс для активного состояния
                         />
                         <NavItem
