@@ -7,11 +7,15 @@
     <list default="true" id="5cdfa1bb-d4f4-4be4-85c4-546ea9914183" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/app.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/app.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-header/app-header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/app-header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-header/app-header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/app-header.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-header/nav-item/nav-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/nav-item/nav-item.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-header/nav-item/nav-item.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/nav-item/nav-item.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ingredient-details/ingredient-details.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ingredient-details/ingredient-details.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/forgot-password/forgot-password.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/forgot-password/forgot-password.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile/profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile/profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/profile.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/register/register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/register/register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/reset-password/reset-password.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/reset-password/reset-password.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

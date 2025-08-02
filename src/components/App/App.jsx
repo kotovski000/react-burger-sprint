@@ -23,12 +23,19 @@ import {
 } from '../../services/ingredient-details/slice';
 import { clearOrder } from '../../services/order/slice';
 import { clearConstructor } from "../../services/constructor/slice";
+import {checkUserAuth} from "../../services/auth/actions";
+import {ProtectedRouteElement} from "../protected-route-element/protected-route-element";
 
 function App() {
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
     const background = location.state?.background;
+
+    useEffect(() => {
+        dispatch(fetchIngredients());
+        dispatch(checkUserAuth());
+    }, [dispatch]);
 
     const {
         loading,
@@ -81,20 +88,26 @@ function App() {
             <AppHeader />
             <main className={`${styles.main} ${isHomePage ? styles.home : styles.regular}`}>
                 <Routes location={background || location}>
-                    <Route
-                        path="/"
-                        element={
-                            <DndProvider backend={HTML5Backend}>
-                                <BurgerIngredients onIngredientClick={handleIngredientClick} />
-                                <BurgerConstructor />
-                            </DndProvider>
-                        }
-                    />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/register" element={<RegisterPage />} />
-                    <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                    <Route path="/reset-password" element={<ResetPasswordPage />} />
-                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/" element={
+                        <DndProvider backend={HTML5Backend}>
+                            <BurgerIngredients onIngredientClick={handleIngredientClick} />
+                            <BurgerConstructor />
+                        </DndProvider>
+                    } />
+                    <Route path="/login" element={
+                        <ProtectedRouteElement onlyUnAuth element={<LoginPage />} />
+                    } />
+                    <Route path="/register" element={
+                        <ProtectedRouteElement onlyUnAuth element={<RegisterPage />} />
+                    } />
+                    <Route path="/forgot-password" element={
+                        <ProtectedRouteElement onlyUnAuth element={<ForgotPasswordPage />} />
+                    } />
+                    <Route path="/reset-password" element={<ProtectedRouteElement onlyUnAuth onlyFromForgot element={<ResetPasswordPage />}/>
+                    } />
+                    <Route path="/profile" element={
+                        <ProtectedRouteElement element={<ProfilePage />} />
+                    } />
                     <Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
                 </Routes>
 
