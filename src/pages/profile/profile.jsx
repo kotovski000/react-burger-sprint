@@ -8,7 +8,7 @@ import styles from './profile.module.css';
 const ProfilePage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { user, loading } = useSelector((state) => state.auth);
+    const { user, loading, error, accessToken } = useSelector((state) => state.auth);
 
     const [form, setForm] = useState({
         name: '',
@@ -18,8 +18,8 @@ const ProfilePage = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [isFormChanged, setIsFormChanged] = useState(false);
+    const [updateError, setUpdateError] = useState(null);
 
-    // Инициализация формы
     useEffect(() => {
         if (user) {
             setForm({
@@ -30,13 +30,18 @@ const ProfilePage = () => {
         }
     }, [user]);
 
-    // Проверка изменений в форме
     useEffect(() => {
-        const nameChanged = form.name !== user?.name;
-        const emailChanged = form.email !== user?.email;
-        const passwordChanged = form.password !== '';
+        const initialValues = {
+            name: user?.name || '',
+            email: user?.email || '',
+            password: ''
+        };
 
-        setIsFormChanged(nameChanged || emailChanged || passwordChanged);
+        setIsFormChanged(
+            form.name !== initialValues.name ||
+            form.email !== initialValues.email ||
+            form.password !== initialValues.password
+        );
     }, [form, user]);
 
     const handleChange = (e) => {
@@ -46,6 +51,7 @@ const ProfilePage = () => {
 
     const startEditing = () => {
         setIsEditing(true);
+        setUpdateError(null);
     };
 
     const cancelEditing = () => {
@@ -56,6 +62,7 @@ const ProfilePage = () => {
         });
         setIsEditing(false);
         setShowPassword(false);
+        setUpdateError(null);
     };
 
     const handleSubmit = async (e) => {
@@ -66,21 +73,22 @@ const ProfilePage = () => {
         }
 
         try {
+            setUpdateError(null);
             const userData = {
                 name: form.name,
                 email: form.email,
                 ...(form.password && { password: form.password })
             };
 
-            await dispatch(updateUser(userData)).unwrap();
+            await dispatch(updateUser({ accessToken, userData })).unwrap();
 
-            // После успешного обновления
             setIsEditing(false);
             setShowPassword(false);
             setForm(prev => ({ ...prev, password: '' }));
 
         } catch (error) {
             console.error('Ошибка при обновлении профиля:', error);
+            setUpdateError(error.message || 'Не удалось обновить профиль');
         }
     };
 
@@ -92,6 +100,14 @@ const ProfilePage = () => {
             });
         }
     };
+
+    if (loading && !user) {
+        return <div className={styles.container}>Загрузка данных профиля...</div>;
+    }
+
+    if (error) {
+        return <div className={styles.container}>Ошибка: {error}</div>;
+    }
 
     return (
         <div className={styles.container}>
@@ -180,6 +196,11 @@ const ProfilePage = () => {
                             onIconClick={startEditing}
                             extraClass="mt-6 text_color_inactive"
                         />
+                    )}
+                    {updateError && (
+                        <p className={` text text_type_main-default mt-6`}>
+                            {updateError}
+                        </p>
                     )}
                     {isEditing && (
                         <div className={`${styles.buttons} mt-6`}>
