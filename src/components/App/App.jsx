@@ -41,9 +41,9 @@ function App() {
         loading,
         error
     } = useSelector((state) => state.ingredients);
-    const { item: selectedIngredient } = useSelector(
-        (state) => state.ingredientDetails
-    );
+    // const { item: selectedIngredient } = useSelector(
+    //     (state) => state.ingredientDetails
+    // );
     const { number: orderNumber, error: orderError } = useSelector(
         (state) => state.order
     );
@@ -56,7 +56,10 @@ function App() {
 
     const handleIngredientClick = (ingredient) => {
         dispatch(setIngredientDetails(ingredient));
-        setModalType('ingredient');
+        navigate(`/ingredients/${ingredient._id}`, {
+            state: { background: location }
+        });
+        // setModalType('ingredient');
     };
 
     useEffect(() => {
@@ -90,7 +93,7 @@ function App() {
                 <Routes location={background || location}>
                     <Route path="/" element={
                         <DndProvider backend={HTML5Backend}>
-                            <BurgerIngredients onIngredientClick={handleIngredientClick} />
+                                <BurgerIngredients onIngredientClick={handleIngredientClick} />
                             <BurgerConstructor />
                         </DndProvider>
                     } />
@@ -111,11 +114,24 @@ function App() {
                     <Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
                 </Routes>
 
-                {selectedIngredient && modalType === 'ingredient' && (
-                    <Modal title="Детали ингредиента" onClose={closeModal}>
-                        <IngredientDetails />
-                    </Modal>
+                {background && (
+                    <Routes>
+                        <Route
+                            path="/ingredients/:id"
+                            element={
+                                <Modal title="Детали ингредиента" onClose={closeModal}>
+                                    <IngredientDetails />
+                                </Modal>
+                            }
+                        />
+                    </Routes>
                 )}
+
+                {/*{selectedIngredient && modalType === 'ingredient' && (*/}
+                {/*    <Modal title="Детали ингредиента" onClose={closeModal}>*/}
+                {/*        <IngredientDetails />*/}
+                {/*    </Modal>*/}
+                {/*)}*/}
 
                 {orderNumber && modalType === 'order' && (
                     <Modal title="" onClose={closeModal}>

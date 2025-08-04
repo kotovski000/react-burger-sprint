@@ -1,30 +1,53 @@
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useMatch } from 'react-router-dom';
 import styles from './app-header.module.css';
 import NavItem from './nav-item/nav-item';
 
 const AppHeader = () => {
+    const location = useLocation();
+    const isIngredientPage = useMatch('/ingredients/:id');
+
+    const getBasePath = () => {
+        if (isIngredientPage) return '/';
+
+        return location.state?.background?.pathname || location.pathname;
+    };
+
+    const basePath = getBasePath();
+
+    const isConstructorActive = basePath === '/';
+    const isFeedActive = basePath === '/feed';
+    const isProfileActive = basePath.startsWith('/profile');
+
     return (
         <header className={`${styles.header} pt-4 pb-4`}>
             <div className={styles.container}>
                 <nav className={styles.nav}>
                     {/* Левый блок навигации */}
                     <div className={`${styles.navBlock} ${styles.left}`}>
-                        <NavLink to="/" className={styles.link}>
-                            {({ isActive }) => (
+                        <NavLink
+                            to="/"
+                            className={styles.link}
+                            isActive={() => isConstructorActive}
+                        >
+                            {() => (
                                 <NavItem
-                                    icon={<BurgerIcon type={isActive ? 'primary' : 'secondary'} />}
+                                    icon={<BurgerIcon type={isConstructorActive ? 'primary' : 'secondary'} />}
                                     text="Конструктор"
-                                    isActive={isActive}
+                                    isActive={isConstructorActive}
                                 />
                             )}
                         </NavLink>
-                        <NavLink to="/feed" className={styles.link}>
-                            {({ isActive }) => (
+                        <NavLink
+                            to="/feed"
+                            className={styles.link}
+                            isActive={() => isFeedActive}
+                        >
+                            {() => (
                                 <NavItem
-                                    icon={<ListIcon type={isActive ? 'primary' : 'secondary'} />}
+                                    icon={<ListIcon type={isFeedActive ? 'primary' : 'secondary'} />}
                                     text="Лента заказов"
-                                    isActive={isActive}
+                                    isActive={isFeedActive}
                                 />
                             )}
                         </NavLink>
@@ -37,12 +60,16 @@ const AppHeader = () => {
 
                     {/* Правый блок (личный кабинет) */}
                     <div className={`${styles.navBlock} ${styles.right}`}>
-                        <NavLink to="/profile" className={styles.link}>
-                            {({ isActive }) => (
+                        <NavLink
+                            to="/profile"
+                            className={styles.link}
+                            isActive={() => isProfileActive}
+                        >
+                            {() => (
                                 <NavItem
-                                    icon={<ProfileIcon type={isActive ? 'primary' : 'secondary'} />}
+                                    icon={<ProfileIcon type={isProfileActive ? 'primary' : 'secondary'} />}
                                     text="Личный кабинет"
-                                    isActive={isActive}
+                                    isActive={isProfileActive}
                                 />
                             )}
                         </NavLink>
