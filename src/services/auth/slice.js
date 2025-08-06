@@ -120,6 +120,7 @@ const authSlice = createSlice({
                 state.accessToken = action.payload.accessToken;
                 state.refreshToken = action.payload.refreshToken;
                 state.loading = false;
+                localStorage.setItem('accessToken', action.payload.accessToken);
                 localStorage.setItem('refreshToken', action.payload.refreshToken);
             })
             .addCase(loginUser.rejected, (state, action) => {

@@ -9,7 +9,6 @@ const AppHeader = () => {
 
     const getBasePath = () => {
         if (isIngredientPage) return '/';
-
         return location.state?.background?.pathname || location.pathname;
     };
 
@@ -28,28 +27,22 @@ const AppHeader = () => {
                         <NavLink
                             to="/"
                             className={styles.link}
-                            isActive={() => isConstructorActive}
                         >
-                            {() => (
-                                <NavItem
-                                    icon={<BurgerIcon type={isConstructorActive ? 'primary' : 'secondary'} />}
-                                    text="Конструктор"
-                                    isActive={isConstructorActive}
-                                />
-                            )}
+                            <NavItem
+                                icon={<BurgerIcon type={isConstructorActive ? 'primary' : 'secondary'} />}
+                                text="Конструктор"
+                                isActive={isConstructorActive}
+                            />
                         </NavLink>
                         <NavLink
                             to="/feed"
                             className={styles.link}
-                            isActive={() => isFeedActive}
                         >
-                            {() => (
-                                <NavItem
-                                    icon={<ListIcon type={isFeedActive ? 'primary' : 'secondary'} />}
-                                    text="Лента заказов"
-                                    isActive={isFeedActive}
-                                />
-                            )}
+                            <NavItem
+                                icon={<ListIcon type={isFeedActive ? 'primary' : 'secondary'} />}
+                                text="Лента заказов"
+                                isActive={isFeedActive}
+                            />
                         </NavLink>
                     </div>
 
@@ -63,15 +56,12 @@ const AppHeader = () => {
                         <NavLink
                             to="/profile"
                             className={styles.link}
-                            isActive={() => isProfileActive}
                         >
-                            {() => (
-                                <NavItem
-                                    icon={<ProfileIcon type={isProfileActive ? 'primary' : 'secondary'} />}
-                                    text="Личный кабинет"
-                                    isActive={isProfileActive}
-                                />
-                            )}
+                            <NavItem
+                                icon={<ProfileIcon type={isProfileActive ? 'primary' : 'secondary'} />}
+                                text="Личный кабинет"
+                                isActive={isProfileActive}
+                            />
                         </NavLink>
                     </div>
                 </nav>

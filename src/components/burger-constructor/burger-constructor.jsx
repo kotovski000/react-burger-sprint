@@ -25,7 +25,7 @@ const BurgerConstructor = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { isAuthChecked } = useSelector(state => state.auth);
+    const { isAuthChecked, accessToken } = useSelector(state => state.auth);
 
     const [, dropTarget] = useDrop({
         accept: ItemTypes.INGREDIENT,
@@ -48,7 +48,7 @@ const BurgerConstructor = () => {
 
     const handleOrderClick = () => {
 
-        if (!isAuthChecked) {
+        if (!isAuthChecked || !accessToken) {
             navigate('/login', { state: { from: location.pathname } });
             return;
         }

@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5cdfa1bb-d4f4-4be4-85c4-546ea9914183" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/app.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/app.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/app-header/app-header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/app-header.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ingredient-details/ingredient-details.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ingredient-details/ingredient-details.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingredient-details/ingredient-details.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingredient-details/ingredient-details.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth/slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/order/slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/order/slice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +44,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "sprint-3/step-1",
     "last_opened_file_path": "C:/Users/dkoto/Desktop/react-burger-sprint1/src/services/view",
@@ -56,7 +54,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.start.executor": "Run",
-    "ts.external.directory.path": "C:\\Users\\dkoto\\Desktop\\react-burger-sprint\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/Users/dkotov/Desktop/react-burger-sprint/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>

@@ -2,7 +2,7 @@ import styles from './nav-item.module.css';
 import React from 'react';
 import { NavItemType } from "../../../utils/types";
 
-const NavItem = ({ icon, text, isActive = false }) => {
+const NavItem = ({ icon, text, isActive }) => {
     return (
         <div className={`${styles.navItem} pl-5 pr-5 pb-4 pt-4 ${isActive ? styles.active : ''}`}>
             {icon}
