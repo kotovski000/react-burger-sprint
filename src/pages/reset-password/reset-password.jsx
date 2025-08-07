@@ -3,7 +3,7 @@ import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-component
 import { useForm } from '../../hooks/useForm';
 import { resetPassword } from '../../services/auth/slice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './reset-password.module.css';
 
 const ResetPasswordPage = () => {
@@ -15,8 +15,8 @@ const ResetPasswordPage = () => {
         password: '',
         token: ''
     });
+    const [showPassword, setShowPassword] = useState(false);
 
-    // Проверяем, что пользователь пришел с forgot-password
     useEffect(() => {
         if (!location.state?.fromForgotPassword) {
             navigate('/forgot-password', { replace: true });
@@ -43,12 +43,13 @@ const ResetPasswordPage = () => {
             {error && <p className={`text text_type_main-default ${styles.error}`}>{error}</p>}
             <form className={styles.form} onSubmit={handleSubmit}>
                 <Input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     placeholder="Введите новый пароль"
                     name="password"
                     value={values.password}
                     onChange={handleChange}
-                    icon="ShowIcon"
+                    icon={showPassword ? 'HideIcon' : 'ShowIcon'}
+                    onIconClick={() => setShowPassword(prev => !prev)}
                     extraClass="mb-6"
                     required
                 />
