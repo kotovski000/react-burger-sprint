@@ -1,12 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styles from './ingredient-details.module.css';
+import { IngredientDetailsType } from '../../utils/types';
 
-const IngredientDetails = () => {
-    const { item: ingredient } = useSelector((state) => state.ingredientDetails);
-
-    if (!ingredient) return null;
-
+const IngredientDetails = ({ ingredient }) => {
     return (
         <div className={styles.details}>
             <img
@@ -20,43 +16,47 @@ const IngredientDetails = () => {
 
             <div className={`mt-8 mb-15 ${styles.nutrition}`}>
                 <div className={styles.nutritionItem}>
-          <span className="text text_type_main-default text_color_inactive">
-            Калории,ккал
-          </span>
+                    <span className="text text_type_main-default text_color_inactive">
+                        Калории,ккал
+                    </span>
                     <span className="text text_type_digits-default text_color_inactive mt-2">
-            {ingredient.calories}
-          </span>
+                        {ingredient.calories}
+                    </span>
                 </div>
 
                 <div className={styles.nutritionItem}>
-          <span className="text text_type_main-default text_color_inactive">
-            Белки, г
-          </span>
+                    <span className="text text_type_main-default text_color_inactive">
+                        Белки, г
+                    </span>
                     <span className="text text_type_digits-default text_color_inactive mt-2">
-            {ingredient.proteins}
-          </span>
+                        {ingredient.proteins}
+                    </span>
                 </div>
 
                 <div className={styles.nutritionItem}>
-          <span className="text text_type_main-default text_color_inactive">
-            Жиры, г
-          </span>
+                    <span className="text text_type_main-default text_color_inactive">
+                        Жиры, г
+                    </span>
                     <span className="text text_type_digits-default text_color_inactive mt-2">
-            {ingredient.fat}
-          </span>
+                        {ingredient.fat}
+                    </span>
                 </div>
 
                 <div className={styles.nutritionItem}>
-          <span className="text text_type_main-default text_color_inactive">
-            Углеводы, г
-          </span>
+                    <span className="text text_type_main-default text_color_inactive">
+                        Углеводы, г
+                    </span>
                     <span className="text text_type_digits-default text_color_inactive mt-2">
-            {ingredient.carbohydrates}
-          </span>
+                        {ingredient.carbohydrates}
+                    </span>
                 </div>
             </div>
         </div>
     );
+};
+
+IngredientDetails.propTypes = {
+    ingredient: IngredientDetailsType.isRequired,
 };
 
 export default IngredientDetails;

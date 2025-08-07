@@ -1,7 +1,6 @@
 .constructor {
     display: flex;
     flex-direction: column;
-    margin-block-start: 60px;
     width: 600px;
     gap: 16px;
 }
