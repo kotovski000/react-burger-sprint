@@ -12,11 +12,14 @@ const AppHeader = () => {
                         <NavItem
                             icon={<BurgerIcon type="secondary" />}
                             text="Конструктор"
+                            to="/"
+                            exact
                             isActive  // пропс для активного состояния
                         />
                         <NavItem
                             icon={<ListIcon type="secondary" />}
                             text="Лента заказов"
+                            to="/feed"
                         />
                     </div>
 
@@ -30,6 +33,7 @@ const AppHeader = () => {
                         <NavItem
                             icon={<ProfileIcon type="secondary" />}
                             text="Личный кабинет"
+                            to="/profile"
                         />
                     </div>
                 </nav>
