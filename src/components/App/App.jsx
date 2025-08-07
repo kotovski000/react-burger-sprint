@@ -8,30 +8,13 @@ import OrderDetails from '../order-details/order-details';
 import styles from './app.module.css';
 import { API_URL } from '../../utils/constants';
 
-interface Ingredient {
-    _id: string;
-    name: string;
-    type: 'bun' | 'sauce' | 'main';
-    price: number;
-    image: string;
-    image_mobile: string;
-    image_large: string;
-    calories: number;
-    proteins: number;
-    fat: number;
-    carbohydrates: number;
-    count: number;
-}
-
-type ActiveModal = 'ingredient' | 'order' | null;
-
 function App() {
-    const [ingredients, setIngredients] = useState<Ingredient[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-    const [selectedIngredient, setSelectedIngredient] = useState<Ingredient | null>(null);
-    const [orderNumber, setOrderNumber] = useState<number | null>(null);
-    const [activeModal, setActiveModal] = useState<ActiveModal>(null);
+    const [ingredients, setIngredients] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [selectedIngredient, setSelectedIngredient] = useState(null);
+    const [orderNumber, setOrderNumber] = useState(null);
+    const [activeModal, setActiveModal] = useState(null);
 
     useEffect(() => {
         const fetchIngredients = async () => {
@@ -41,12 +24,8 @@ function App() {
                 const data = await response.json();
                 if (data.success) setIngredients(data.data);
                 else throw new Error('API request was not successful');
-            } catch (err: unknown) {
-                if (err instanceof Error) {
-                    setError(err.message);
-                } else {
-                    setError('An unknown error occurred');
-                }
+            } catch (err) {
+                setError(err.message || 'An unknown error occurred');
                 console.error('Error fetching ingredients:', err);
             } finally {
                 setLoading(false);
@@ -56,13 +35,12 @@ function App() {
         fetchIngredients();
     }, []);
 
-    const handleIngredientClick = (ingredient: Ingredient) => {
+    const handleIngredientClick = (ingredient) => {
         setSelectedIngredient(ingredient);
         setActiveModal('ingredient');
     };
 
     const handleOrderClick = () => {
-        //генерация случайного номера
         setOrderNumber(Math.floor(Math.random() * 1000000));
         setActiveModal('order');
     };
