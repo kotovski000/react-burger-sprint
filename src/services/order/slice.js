@@ -3,12 +3,16 @@ import { request } from '../../utils/api';
 
 export const createOrder = createAsyncThunk(
     'order/createOrder',
-    async (ingredients, { rejectWithValue }) => {
+    async (ingredients, { rejectWithValue, getState }) => {
+        const { auth } = getState();
+        const token = auth.accessToken;
+
         try {
             const data = await request('/orders', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `${token}`,
                 },
                 body: JSON.stringify({ ingredients })
             });

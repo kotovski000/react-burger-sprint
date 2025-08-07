@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5cdfa1bb-d4f4-4be4-85c4-546ea9914183" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/app-header/app-header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/app-header.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/constructor/slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/constructor/slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/ingredients/slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ingredients/slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth/slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/slice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/order/slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/order/slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sprint-2/step-1" />
+        <entry key="$PROJECT_DIR$" value="sprint-2/step-2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,8 +44,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "sprint-2/step-2",
+    "git-widget-placeholder": "sprint-3/step-1",
     "last_opened_file_path": "C:/Users/dkoto/Desktop/react-burger-sprint1/src/services/view",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -56,7 +54,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.start.executor": "Run",
-    "ts.external.directory.path": "C:\\Users\\dkoto\\Desktop\\react-burger-sprint\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/Users/dkotov/Desktop/react-burger-sprint/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -94,7 +92,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26053.12" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26574.96" />
       </set>
     </attachedChunks>
   </component>

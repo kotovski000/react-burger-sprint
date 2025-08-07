@@ -15,12 +15,17 @@ import {
     moveIngredient
 } from '../../services/constructor/slice';
 import { createOrder } from '../../services/order/slice';
+import {useLocation, useNavigate} from "react-router-dom";
 
 const BurgerConstructor = () => {
     const dispatch = useDispatch();
     const { bun, ingredients } = useSelector((state) => state.burgerConstructor);
     const { loading: orderLoading } = useSelector((state) => state.order);
     const { items: allIngredients } = useSelector((state) => state.ingredients);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const { isAuthChecked, accessToken } = useSelector(state => state.auth);
 
     const [, dropTarget] = useDrop({
         accept: ItemTypes.INGREDIENT,
@@ -42,6 +47,12 @@ const BurgerConstructor = () => {
     }, [bun, ingredients]);
 
     const handleOrderClick = () => {
+
+        if (!isAuthChecked || !accessToken) {
+            navigate('/login', { state: { from: location.pathname } });
+            return;
+        }
+
         if (!bun) return;
 
         const ingredientsIds = [
