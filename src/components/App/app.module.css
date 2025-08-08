@@ -3,12 +3,26 @@
     flex-direction: column;
     background-color: #131316;
     color: #F2F2F3;
+    min-height: 100vh;
+    position: relative;
 }
 
 .main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     margin: 0 auto;
     padding: 40px 20px;
     box-sizing: border-box;
+    width: 100%;
+    max-width: 1280px;
+    flex: 1;
+    position: relative;
+}
+
+.main.home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.main.regular {
+    display: block;
 }

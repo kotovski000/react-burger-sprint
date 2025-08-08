@@ -7,6 +7,7 @@ import styles from './burger-ingredients.module.css';
 const BurgerIngredients = ({ onIngredientClick }) => {
     const [currentTab, setCurrentTab] = useState('bun');
     const containerRef = useRef(null);
+
     const { items: ingredients } = useSelector((state) => state.ingredients);
     const { bun, ingredients: constructorIngredients } = useSelector(
         (state) => state.burgerConstructor
@@ -32,6 +33,7 @@ const BurgerIngredients = ({ onIngredientClick }) => {
         ingredients.forEach((ingredient) => groups[ingredient.type].push(ingredient));
         return groups;
     }, [ingredients]);
+
 
     const handleTabClick = useCallback((type) => {
         setCurrentTab(type);
