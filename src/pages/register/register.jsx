@@ -3,7 +3,7 @@ import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-component
 import { useForm } from '../../hooks/useForm';
 import { registerUser } from '../../services/auth/slice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './register.module.css';
 
 const RegisterPage = () => {
@@ -15,6 +15,7 @@ const RegisterPage = () => {
         email: '',
         password: ''
     });
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -51,12 +52,13 @@ const RegisterPage = () => {
                     required
                 />
                 <Input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     placeholder="Пароль"
                     name="password"
                     value={values.password}
                     onChange={handleChange}
-                    icon="ShowIcon"
+                    icon={showPassword ? 'HideIcon' : 'ShowIcon'}
+                    onIconClick={() => setShowPassword(prev => !prev)}
                     extraClass="mb-6"
                     required
                 />
