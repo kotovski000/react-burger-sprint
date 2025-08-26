@@ -79,11 +79,13 @@ function App() {
 	if (loading) return <div className={styles.app}>Loading...</div>;
 	if (error) return <div className={styles.app}>Error: {error}</div>;
 	const isHomePage = location.pathname === '/';
+	const isModalOpen = !!background;
+	const mainClassName = isHomePage || isModalOpen ? styles.home : styles.regular;
 
 	return (
 		<div className={styles.app}>
 			<AppHeader />
-			<main className={`${styles.main} ${isHomePage ? styles.home : styles.regular}`}>
+			<main className={`${styles.main} ${mainClassName}`}>
 				<Routes location={background || location}>
 					<Route path="/" element={
 						<DndProvider backend={HTML5Backend}>

@@ -67,9 +67,7 @@ export interface IngredientsResponse {
 export interface OrderResponse {
 	success: boolean;
 	name: string;
-	order: {
-		number: number;
-	};
+	order: Order;
 }
 
 export interface PasswordResetResponse {
