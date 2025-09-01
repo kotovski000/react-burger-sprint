@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cdfa1bb-d4f4-4be4-85c4-546ea9914183" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_08_2025_22_23_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_08_2025_22_23__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/app.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/app.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/order/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/order/slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile/profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/profile.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +56,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\dkoto\\Desktop\\react-burger-sprint\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/dkotov/Desktop/react-burger-sprint/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -68,6 +68,7 @@
       <recent name="C:\Users\dkoto\Desktop\react-burger-sprint1\src\services\modal" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/services/websocket" />
       <recent name="C:\Users\dkoto\Desktop\FrontEnd\React-разработчик\Спринт I. Основы React\Проект\react-burger\src\components\app-header" />
       <recent name="C:\Users\dkoto\Desktop\FrontEnd\React-разработчик\Спринт I. Основы React\Проект\react-burger\src\components\App" />
       <recent name="C:\Users\dkoto\Desktop\react-burger\src\components\burger-ingredients" />
@@ -117,6 +118,7 @@
       <workItem from="1751805732826" duration="1537000" />
       <workItem from="1756118277259" duration="842000" />
       <workItem from="1756208540745" duration="2652000" />
+      <workItem from="1756709690089" duration="306000" />
     </task>
     <servers />
   </component>

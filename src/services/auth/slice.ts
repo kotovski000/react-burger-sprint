@@ -11,6 +11,8 @@ interface AuthState {
 	error: string | null;
 	passwordResetRequested: boolean;
 	passwordReset: boolean;
+	accessTokenExpired: boolean;
+
 }
 
 export const registerUser = createAsyncThunk(
@@ -86,6 +88,8 @@ const initialState: AuthState = {
 	error: null,
 	passwordResetRequested: false,
 	passwordReset: false,
+	accessTokenExpired: false,
+
 };
 
 const authSlice = createSlice({
@@ -214,7 +218,7 @@ const authSlice = createSlice({
 			.addCase(resetPassword.rejected, (state, action) => {
 				state.loading = false;
 				state.error = action.error.message || 'Password reset failed';
-			});
+			})
 	}
 });
 

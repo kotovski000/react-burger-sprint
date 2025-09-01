@@ -3,70 +3,20 @@
     margin: 0 auto;
     padding: 40px 20px;
     display: grid;
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 1fr 580px;
     gap: 60px;
-    min-height: 70vh;
 }
 
-.sidebar {
-    display: flex;
-    flex-direction: column;
-}
-
-.navigation {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.link {
-    padding: 16px 0;
-    text-decoration: none;
-    color: #8585AD;
-    transition: all 0.3s ease;
-    border: none;
-    background: none;
-    cursor: pointer;
-    text-align: left;
-}
-
-.link:hover {
-    color: #F2F2F3;
-}
-
-.active {
-    color: #F2F2F3;
-}
-
-.hint {
-    opacity: 0.6;
-    line-height: 1.5;
-}
-
-.content {
-    max-width: 844px;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-}
-
-.buttons {
-    display: flex;
-    gap: 16px;
-}
-
-/* Стили для секции заказов */
-.ordersSection {
-    width: 100%;
+.title {
+    composes: text_type_main-large from global;
+    margin-bottom: 20px;
 }
 
 .ordersContainer {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    max-height: 650px;
+    max-height: 750px;
     overflow-y: auto;
     padding-right: 8px;
 }
@@ -97,7 +47,6 @@
 .orderCard:hover {
     border-color: #4C4CFF;
     transform: translateY(-2px);
-    box-shadow: 0 4px 32px rgba(51, 51, 255, 0.1);
 }
 
 .orderHeader {
@@ -140,7 +89,7 @@
     color: #8585AD;
 }
 
-.orderFooter {
+.orderIngredients {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -163,7 +112,6 @@
     justify-content: center;
     margin-left: -16px;
     position: relative;
-    overflow: hidden;
 }
 
 .ingredientCircle:first-child {
@@ -189,7 +137,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #F2F2F3;
 }
 
 .orderTotal {
@@ -203,45 +150,68 @@
     color: #F2F2F3;
 }
 
-@media (max-width: 968px) {
+.statsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.ordersStatus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+}
+
+.statusColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.statusTitle {
+    composes: text_type_main-medium from global;
+    color: #F2F2F3;
+    margin-bottom: 24px;
+}
+
+.statusList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 320px;
+    flex-wrap: wrap;
+}
+
+.statusNumber {
+    composes: text_type_digits-default from global;
+    color: #00CCCC;
+}
+
+.statusNumberPending {
+    color: #F2F2F3;
+}
+
+.statsTitle {
+    composes: text_type_main-medium from global;
+    color: #F2F2F3;
+    margin-bottom: 24px;
+}
+
+.statsNumber {
+    composes: text_type_digits-large from global;
+    color: #F2F2F3;
+    text-shadow: 0px 0px 16px rgba(51, 51, 255, 0.25),
+    0px 0px 8px rgba(51, 51, 255, 0.25),
+    0px 4px 32px rgba(51, 51, 255, 0.5);
+}
+
+@media (max-width: 1200px) {
     .container {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 40px;
     }
 
-    .sidebar {
-        order: 2;
-    }
-
-    .content {
-        order: 1;
-        max-width: 100%;
-    }
-
-    .navigation {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 16px;
-    }
-
-    .link {
-        padding: 12px 16px;
-        border-radius: 40px;
-        background: #1C1C21;
-    }
-
-    .ordersContainer {
-        max-height: 500px;
-    }
-
-    .ingredientCircle {
-        width: 48px;
-        height: 48px;
-        margin-left: -12px;
-    }
-
-    .ingredientImage {
-        width: 84px;
-        height: 42px;
+    .statsContainer {
+        order: -1;
     }
 }

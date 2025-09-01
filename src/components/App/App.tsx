@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
@@ -15,6 +15,9 @@ import ForgotPasswordPage from '../../pages/forgot-password/forgot-password';
 import ResetPasswordPage from '../../pages/reset-password/reset-password';
 import ProfilePage from '../../pages/profile/profile';
 import IngredientDetailsPage from '../../pages/ingredient-details/ingredient-details';
+import FeedPage from '../../pages/feed/feed';
+import OrderInfo from '../../pages/order-info/order-info';
+// import ProfileOrdersPage from '../../pages/profile-orders/profile-orders';
 import styles from './app.module.css';
 import { fetchIngredients } from '../../services/ingredients/slice';
 import {
@@ -23,10 +26,10 @@ import {
 } from '../../services/ingredient-details/slice';
 import { clearOrder } from '../../services/order/slice';
 import { clearConstructor } from "../../services/constructor/slice";
-import {checkUserAuth} from "../../services/auth/actions";
-import {ProtectedRouteElement} from "../protected-route-element/protected-route-element";
-import {AppDispatch, RootState} from '../../services/store';
-import {Ingredient} from "../../utils/types";
+import { checkUserAuth } from "../../services/auth/actions";
+import { ProtectedRouteElement } from "../protected-route-element/protected-route-element";
+import { AppDispatch, RootState } from '../../services/store';
+import { Ingredient } from "../../utils/types";
 
 function App() {
 	const dispatch = useDispatch<AppDispatch>();
@@ -78,9 +81,12 @@ function App() {
 
 	if (loading) return <div className={styles.app}>Loading...</div>;
 	if (error) return <div className={styles.app}>Error: {error}</div>;
+
 	const isHomePage = location.pathname === '/';
 	const isModalOpen = !!background;
 	const mainClassName = isHomePage || isModalOpen ? styles.home : styles.regular;
+
+	const orderData = location.state?.order;
 
 	return (
 		<div className={styles.app}>
@@ -103,12 +109,25 @@ function App() {
 					<Route path="/forgot-password" element={
 						<ProtectedRouteElement onlyUnAuth element={<ForgotPasswordPage />} />
 					} />
-					<Route path="/reset-password" element={<ProtectedRouteElement onlyUnAuth onlyFromForgot element={<ResetPasswordPage />}/>
+					<Route path="/reset-password" element={
+						<ProtectedRouteElement onlyUnAuth onlyFromForgot element={<ResetPasswordPage />} />
 					} />
-					<Route path="/profile" element={
+					<Route path="/profile/*" element={
 						<ProtectedRouteElement element={<ProfilePage />} />
 					} />
-					<Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
+					{/*<Route path="/profile/orders" element={*/}
+					{/*	<ProtectedRouteElement element={<ProfileOrdersPage />} />*/}
+					{/*} />*/}
+					<Route path="/profile/orders/:number" element={
+						<ProtectedRouteElement element={<OrderInfo />} />
+					} />
+					<Route path="/ingredients/:id" element={
+						<IngredientDetailsPage />} />
+					<Route path="/feed" element={
+						<FeedPage />} />
+					<Route path="/feed/:number" element={
+						<OrderInfo />} />
+
 				</Routes>
 
 				{background && (
@@ -118,6 +137,22 @@ function App() {
 							element={
 								<Modal title="Детали ингредиента" onClose={closeModal}>
 									<IngredientDetails />
+								</Modal>
+							}
+						/>
+						<Route
+							path="/feed/:number"
+							element={
+								<Modal title={`#${orderData?.number}`} onClose={closeModal}>
+									<OrderInfo order={orderData} />
+								</Modal>
+							}
+						/>
+						<Route
+							path="/profile/orders/:number"
+							element={
+								<Modal title={`#${orderData?.number}`} onClose={closeModal}>
+									<OrderInfo order={orderData} />
 								</Modal>
 							}
 						/>
