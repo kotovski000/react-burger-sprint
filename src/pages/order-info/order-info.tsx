@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks/redux';
 import styles from './order-info.module.css';
 import { request } from '../../utils/api';
-import {Orders, OrderFeedMessage} from '../../utils/types';
-import { RootState } from '../../services/store';
+import {OrderFeedMessage, Orders} from '../../utils/types';
 import { deserializeOrder } from '../../utils/orderUtils';
 
-const OrderInfo: React.FC<{ order?: Orders }> = ({ order }) => {
+interface OrderInfoProps {
+	order?: Orders;
+	inModal?: boolean;
+}
+
+const OrderInfo: React.FC<OrderInfoProps> = ({ order, inModal = false }) => {
 	const [orderData, setOrderData] = useState<Orders | null>(order || null);
 	const [loading, setLoading] = useState(!order);
 	const [error, setError] = useState<string | null>(null);
 	const { number } = useParams();
 	const location = useLocation();
-	const ingredients = useSelector((state: RootState) => state.ingredients.items);
+	const ingredients = useAppSelector(state => state.ingredients.items);
 
 	useEffect(() => {
 		const locationOrder = location.state?.order;
@@ -45,7 +49,6 @@ const OrderInfo: React.FC<{ order?: Orders }> = ({ order }) => {
 			fetchOrder();
 		}
 	}, [order, number, location.state]);
-
 
 	if (loading) {
 		return <div className={styles.container}>Загрузка...</div>;
@@ -91,8 +94,10 @@ const OrderInfo: React.FC<{ order?: Orders }> = ({ order }) => {
 	}, 0);
 
 	return (
-		<div className={styles.container}>
-			<span className={styles.orderNumber}>#{orderData.number}</span>
+		<div className={`${styles.container}`}>
+			{!inModal && (
+				<span className={styles.orderNumber}>#{orderData.number}</span>
+			)}
 
 			<h2 className={styles.orderName}>{orderData.name}</h2>
 
@@ -130,7 +135,7 @@ const OrderInfo: React.FC<{ order?: Orders }> = ({ order }) => {
 				<span className={styles.date}>{formatDate(orderData.createdAt)}</span>
 
 				<div className={styles.totalPrice}>
-					<span className={styles.total}>{totalPrice}</span>
+					<span className={styles.total}>{totalPrice} ₽</span>
 				</div>
 			</div>
 		</div>

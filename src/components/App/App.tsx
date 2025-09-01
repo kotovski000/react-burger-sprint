@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
@@ -17,7 +16,6 @@ import ProfilePage from '../../pages/profile/profile';
 import IngredientDetailsPage from '../../pages/ingredient-details/ingredient-details';
 import FeedPage from '../../pages/feed/feed';
 import OrderInfo from '../../pages/order-info/order-info';
-// import ProfileOrdersPage from '../../pages/profile-orders/profile-orders';
 import styles from './app.module.css';
 import { fetchIngredients } from '../../services/ingredients/slice';
 import {
@@ -28,11 +26,11 @@ import { clearOrder } from '../../services/order/slice';
 import { clearConstructor } from "../../services/constructor/slice";
 import { checkUserAuth } from "../../services/auth/actions";
 import { ProtectedRouteElement } from "../protected-route-element/protected-route-element";
-import { AppDispatch, RootState } from '../../services/store';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { Ingredient } from "../../utils/types";
 
 function App() {
-	const dispatch = useDispatch<AppDispatch>();
+	const dispatch = useAppDispatch();
 	const location = useLocation();
 	const navigate = useNavigate();
 	const background = location.state?.background;
@@ -45,9 +43,9 @@ function App() {
 	const {
 		loading,
 		error
-	} = useSelector((state: RootState) => state.ingredients);
-	const { number: orderNumber, error: orderError } = useSelector(
-		(state: RootState) => state.order
+	} = useAppSelector(state => state.ingredients);
+	const { number: orderNumber, error: orderError } = useAppSelector(
+		state => state.order
 	);
 
 	const [modalType, setModalType] = useState<'order' | 'error' | null>(null);
@@ -112,15 +110,17 @@ function App() {
 					<Route path="/reset-password" element={
 						<ProtectedRouteElement onlyUnAuth onlyFromForgot element={<ResetPasswordPage />} />
 					} />
-					<Route path="/profile/*" element={
+
+					<Route path="/profile" element={
 						<ProtectedRouteElement element={<ProfilePage />} />
 					} />
-					{/*<Route path="/profile/orders" element={*/}
-					{/*	<ProtectedRouteElement element={<ProfileOrdersPage />} />*/}
-					{/*} />*/}
+					<Route path="/profile/orders" element={
+						<ProtectedRouteElement element={<ProfilePage />} />
+					} />
 					<Route path="/profile/orders/:number" element={
 						<ProtectedRouteElement element={<OrderInfo />} />
 					} />
+
 					<Route path="/ingredients/:id" element={
 						<IngredientDetailsPage />} />
 					<Route path="/feed" element={
@@ -143,16 +143,16 @@ function App() {
 						<Route
 							path="/feed/:number"
 							element={
-								<Modal title={`#${orderData?.number}`} onClose={closeModal}>
-									<OrderInfo order={orderData} />
+								<Modal title={"Детали заказа"} onClose={closeModal}>
+									<OrderInfo order={orderData} inModal={true} />
 								</Modal>
 							}
 						/>
 						<Route
 							path="/profile/orders/:number"
 							element={
-								<Modal title={`#${orderData?.number}`} onClose={closeModal}>
-									<OrderInfo order={orderData} />
+								<Modal title={"Детали заказа"} onClose={closeModal}>
+									<OrderInfo order={orderData} inModal={true}/>
 								</Modal>
 							}
 						/>

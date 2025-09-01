@@ -1,19 +1,21 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {AppDispatch, RootState, store} from '../services/store';
+import { store } from '../services/store';
 import { connectFeedOrders, connectProfileOrders, disconnectOrders } from '../services/websocket/actions';
-import {updateToken} from "../services/auth/slice";
+import { updateToken } from "../services/auth/slice";
+import { useAppDispatch, useAppSelector } from "./redux";
 
 export const useFeedWebSocket = () => {
-	const dispatch = useDispatch<AppDispatch>();
-	const { feedOrders, total, totalToday, loading, error, wsConnected } = useSelector(
-		(state: RootState) => state.orders
+	const dispatch = useAppDispatch();
+	const { feedOrders, total, totalToday, loading, error, wsConnected } = useAppSelector(
+		state => state.orders
 	);
-
 	useEffect(() => {
-		dispatch(connectFeedOrders());
+		const connectTimeout = setTimeout(() => {
+			dispatch(connectFeedOrders());
+		}, 500);
 
 		return () => {
+			clearTimeout(connectTimeout);
 			dispatch(disconnectOrders());
 		};
 	}, [dispatch]);
@@ -22,15 +24,19 @@ export const useFeedWebSocket = () => {
 };
 
 export const useProfileWebSocket = () => {
-	const dispatch = useDispatch<AppDispatch>();
-	const { accessToken, accessTokenExpired } = useSelector((state: RootState) => state.auth);
-	const { profileOrders, total, totalToday, loading, error, wsConnected } = useSelector(
-		(state: RootState) => state.orders
+	const dispatch = useAppDispatch();
+	const { accessToken, accessTokenExpired } = useAppSelector(state => state.auth);
+	const { profileOrders, total, totalToday, loading, error, wsConnected } = useAppSelector(
+		state => state.orders
 	);
 
 	useEffect(() => {
+		let connectTimeout: NodeJS.Timeout;
+
 		if (accessToken && !accessTokenExpired) {
-			dispatch(connectProfileOrders(accessToken));
+			connectTimeout = setTimeout(() => {
+				dispatch(connectProfileOrders(accessToken));
+			}, 500);
 		} else if (accessTokenExpired) {
 			const refreshToken = localStorage.getItem('refreshToken');
 			if (refreshToken) {
@@ -39,13 +45,16 @@ export const useProfileWebSocket = () => {
 					.then(() => {
 						const newAccessToken = store.getState().auth.accessToken;
 						if (newAccessToken) {
-							dispatch(connectProfileOrders(newAccessToken));
+							connectTimeout = setTimeout(() => {
+								dispatch(connectProfileOrders(newAccessToken));
+							}, 500); // 500ms delay
 						}
 					});
 			}
 		}
 
 		return () => {
+			if (connectTimeout) clearTimeout(connectTimeout);
 			dispatch(disconnectOrders());
 		};
 	}, [dispatch, accessToken, accessTokenExpired]);

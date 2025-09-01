@@ -1,43 +1,41 @@
 import { Middleware, MiddlewareAPI } from 'redux';
 import { AppDispatch, RootState } from '../store';
-import {
-	wsConnectionStart,
-	wsConnectionSuccess,
-	wsConnectionError,
-	wsConnectionClosed,
-	wsGetMessage
-} from './slice';
-import {updateToken} from '../auth/slice';
 
+export interface TWsActions {
+	wsConnectionStart: any;
+	wsConnectionSuccess: any;
+	wsConnectionError: any;
+	wsConnectionClosed: any;
+	wsGetMessage: any;
+}
 
-export const socketMiddleware = (): Middleware => {
+export const socketMiddleware = (wsActions: TWsActions): Middleware => {
 	return (store: MiddlewareAPI<AppDispatch, RootState>) => {
 		let socket: WebSocket | null = null;
 		let reconnectTimeout: NodeJS.Timeout | null = null;
-		const MAX_RECONNECT_ATTEMPTS = 5;
+		const MAX_RECONNECT_ATTEMPTS = 10;
 		let reconnectAttempts = 0;
 
 		return next => (action: any) => {
-			const { dispatch, getState } = store;
+			const { dispatch } = store;
+			const {
+				wsConnectionStart,
+				wsConnectionSuccess,
+				wsConnectionError,
+				wsConnectionClosed,
+				wsGetMessage
+			} = wsActions;
 
 			if (wsConnectionStart.match(action)) {
 				const { url, isProfile } = action.payload;
 
 				if (socket) {
 					socket.close();
+					socket = null;
 				}
 
 				const connect = () => {
 					try {
-						if (isProfile) {
-							const { auth } = getState();
-							if (!auth.accessToken) {
-								console.log('WebSocket: No access token for profile connection');
-								dispatch(wsConnectionError('Требуется авторизация'));
-								return;
-							}
-						}
-
 						console.log('WebSocket: Connecting to', url);
 						socket = new WebSocket(url);
 
@@ -62,30 +60,7 @@ export const socketMiddleware = (): Middleware => {
 								} else if (data.message === 'Invalid or missing token') {
 									console.log('WebSocket: Invalid token');
 									dispatch(wsConnectionError('Invalid or missing token'));
-
-									if (isProfile) {
-										const refreshToken = localStorage.getItem('refreshToken');
-										if (refreshToken) {
-											setTimeout(() => {
-												dispatch(updateToken(refreshToken))
-													.unwrap()
-													.then(() => {
-														const newAccessToken = getState().auth.accessToken;
-														if (newAccessToken) {
-															const token = newAccessToken.replace('Bearer ', '');
-															dispatch(wsConnectionStart({
-																url: `wss://norma.nomoreparties.space/orders?token=${token}`,
-																isProfile: true
-															}));
-														}
-													})
-													.catch((error) => {
-														console.error('WebSocket: Token update failed', error);
-														dispatch(wsConnectionError('Не удалось обновить токен'));
-													});
-											}, 1000);
-										}
-									}
+									socket?.close();
 								} else {
 									dispatch(wsConnectionError(data.message || 'Ошибка получения данных'));
 								}
@@ -121,7 +96,7 @@ export const socketMiddleware = (): Middleware => {
 					}
 				};
 
-				setTimeout(connect, 100);
+				connect();
 			}
 
 			if (wsConnectionClosed.match(action)) {

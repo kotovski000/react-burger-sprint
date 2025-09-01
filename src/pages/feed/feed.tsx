@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './feed.module.css';
-import { useFeedWebSocket } from '../../hooks/useWebSocket';
+import { useFeedWebSocket } from '../../hooks/use-web-socket';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../services/store';
 import { serializeOrder } from '../../utils/orderUtils';

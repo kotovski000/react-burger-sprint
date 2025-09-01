@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    max-height: 750px;
+    max-height: 800px;
     overflow-y: auto;
     padding-right: 8px;
 }
@@ -38,6 +38,7 @@
 .orderCard {
     background: #1C1C21;
     border-radius: 40px;
+    margin-top: 20px;
     padding: 24px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -205,13 +206,3 @@
     0px 4px 32px rgba(51, 51, 255, 0.5);
 }
 
-@media (max-width: 1200px) {
-    .container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .statsContainer {
-        order: -1;
-    }
-}

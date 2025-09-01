@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styles from './profile-orders.module.css';
-import { useProfileWebSocket } from '../../hooks/useWebSocket';
+import { useProfileWebSocket } from '../../hooks/use-web-socket';
 import { RootState } from '../../services/store';
 import { serializeOrder } from '../../utils/orderUtils';
 

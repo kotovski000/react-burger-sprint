@@ -1,12 +1,11 @@
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import React, { useEffect, useState } from 'react';
 import { logoutUser, updateUser } from '../../services/auth/slice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import styles from './profile.module.css';
-import { AppDispatch, RootState } from '../../services/store';
-import { useProfileWebSocket } from '../../hooks/useWebSocket';
 import { serializeOrder } from '../../utils/orderUtils';
+import { useProfileWebSocket } from '../../hooks/use-web-socket';
 
 interface FormValues {
 	name: string;
@@ -14,14 +13,13 @@ interface FormValues {
 	password: string;
 }
 
-const ProfilePage = () => {
-	const dispatch = useDispatch<AppDispatch>();
+const ProfilePage: React.FC = () => {
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { section } = useParams();
-	const { user, loading, error, accessToken } = useSelector((state: RootState) => state.auth);
-	const ingredients = useSelector((state: RootState) => state.ingredients.items);
-	const { orders: profileOrders, loading: ordersLoading, error: ordersError } = useProfileWebSocket();
+	const { user, loading: authLoading, error: authError, accessToken } = useAppSelector(state => state.auth);
+	const ingredients = useAppSelector(state => state.ingredients.items);
+	const { orders: profileOrders, loading: ordersLoading, error: ordersError, wsConnected } = useProfileWebSocket();
 
 	const [form, setForm] = useState<FormValues>({
 		name: '',
@@ -32,7 +30,11 @@ const ProfilePage = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [isFormChanged, setIsFormChanged] = useState(false);
 	const [updateError, setUpdateError] = useState<string>('');
-	const [activeTab, setActiveTab] = useState<'profile' | 'orders'>(section === 'orders' ? 'orders' : 'profile');
+
+	const isOrdersPage = location.pathname === '/profile/orders';
+	const [activeTab, setActiveTab] = useState<'profile' | 'orders'>(
+		isOrdersPage ? 'orders' : 'profile'
+	);
 
 	const sortedOrders = [...profileOrders].sort((a, b) =>
 		new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
@@ -49,12 +51,13 @@ const ProfilePage = () => {
 	}, [user]);
 
 	useEffect(() => {
-		if (section === 'orders') {
+		// Синхронизируем таб с URL
+		if (location.pathname === '/profile/orders') {
 			setActiveTab('orders');
-		} else {
+		} else if (location.pathname === '/profile') {
 			setActiveTab('profile');
 		}
-	}, [section]);
+	}, [location.pathname]);
 
 	useEffect(() => {
 		const initialValues = {
@@ -138,11 +141,7 @@ const ProfilePage = () => {
 
 	const handleOrderClick = (order: any) => {
 		const serializedOrder = serializeOrder(order);
-		const targetPath = activeTab === 'orders'
-			? `/profile/orders/${order.number}`
-			: `/profile/${order.number}`;
-
-		navigate(targetPath, {
+		navigate(`/profile/orders/${order.number}`, {
 			state: { background: location, order: serializedOrder }
 		});
 	};
@@ -201,12 +200,16 @@ const ProfilePage = () => {
 		}
 	};
 
-	if (loading && !user) {
+	if (authLoading && !user) {
 		return <div className={styles.container}>Загрузка данных профиля...</div>;
 	}
 
-	if (error) {
-		return <div className={styles.container}>Ошибка: {error}</div>;
+	if (authError) {
+		return <div className={styles.container}>Ошибка: {authError}</div>;
+	}
+
+	if (!user) {
+		return <div className={styles.container}>Требуется авторизация</div>;
 	}
 
 	return (
@@ -325,24 +328,41 @@ const ProfilePage = () => {
 									htmlType="submit"
 									type="primary"
 									size="medium"
-									disabled={loading || !isFormChanged}
+									disabled={authLoading || !isFormChanged}
 								>
-									{loading ? 'Сохранение...' : 'Сохранить'}
+									{authLoading ? 'Сохранение...' : 'Сохранить'}
 								</Button>
 							</div>
 						)}
 					</form>
 				) : (
 					<div className={styles.ordersSection}>
-						{ordersLoading && (
+
+						{!wsConnected && (
 							<div className="text text_type_main-default text_color_inactive mb-6">
-								Загрузка заказов...
+								Подключение к серверу...
 							</div>
 						)}
 
 						{ordersError && (
 							<div className="text text_type_main-default text_color_error mb-6">
 								Ошибка загрузки заказов: {ordersError}
+								{ordersError.includes('token') && (
+									<div className="mt-2">
+										<Button
+											type="secondary"
+											size="small"
+											onClick={() => window.location.reload()} htmlType={"button"}										>
+											Обновить страницу
+										</Button>
+									</div>
+								)}
+							</div>
+						)}
+
+						{ordersLoading && (
+							<div className="text text_type_main-default text_color_inactive mb-6">
+								Загрузка заказов...
 							</div>
 						)}
 
@@ -403,7 +423,7 @@ const ProfilePage = () => {
 							))}
 						</div>
 
-						{sortedOrders.length === 0 && !ordersLoading && (
+						{sortedOrders.length === 0 && !ordersLoading && !ordersError && (
 							<div className="text text_type_main-default text_color_inactive mt-10">
 								У вас пока нет заказов
 							</div>

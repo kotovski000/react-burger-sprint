@@ -1,6 +1,6 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useForm } from '../../hooks/useForm';
+import { useForm } from '../../hooks/use-form';
 import { loginUser } from '../../services/auth/slice';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';

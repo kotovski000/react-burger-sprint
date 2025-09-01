@@ -6,7 +6,21 @@ import orderReducer from './order/slice';
 import authReducer from './auth/slice';
 import ordersReducer from './websocket/slice';
 import { socketMiddleware } from './websocket/middleware';
-import { logger } from 'redux-logger';
+import {
+	wsConnectionStart,
+	wsConnectionSuccess,
+	wsConnectionError,
+	wsConnectionClosed,
+	wsGetMessage
+} from './websocket/slice';
+
+const wsActions = {
+	wsConnectionStart,
+	wsConnectionSuccess,
+	wsConnectionError,
+	wsConnectionClosed,
+	wsGetMessage
+};
 
 export const store = configureStore({
 	reducer: {
@@ -19,8 +33,7 @@ export const store = configureStore({
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware()
-			.concat(socketMiddleware())
-			.concat(logger),
+			.concat(socketMiddleware(wsActions)),
 	devTools: process.env.NODE_ENV !== 'production'
 });
 

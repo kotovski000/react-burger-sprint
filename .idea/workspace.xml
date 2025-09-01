@@ -7,11 +7,21 @@
     <list default="true" id="5cdfa1bb-d4f4-4be4-85c4-546ea9914183" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile/profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/profile.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app-header/app-header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/app-header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-form.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useWebSocket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-web-socket.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/feed/feed.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/feed/feed.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/feed/feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/feed/feed.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/forgot-password/forgot-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/forgot-password/forgot-password.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/order-info/order-info.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order-info/order-info.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/order-info/order-info.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order-info/order-info.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile-orders/profile-orders.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile-orders/profile-orders.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/profile/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/register/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/register/register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/reset-password/reset-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/reset-password/reset-password.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/websocket/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/websocket/middleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +128,8 @@
       <workItem from="1751805732826" duration="1537000" />
       <workItem from="1756118277259" duration="842000" />
       <workItem from="1756208540745" duration="2652000" />
-      <workItem from="1756709690089" duration="306000" />
+      <workItem from="1756709690089" duration="658000" />
+      <workItem from="1756720652537" duration="6704000" />
     </task>
     <servers />
   </component>

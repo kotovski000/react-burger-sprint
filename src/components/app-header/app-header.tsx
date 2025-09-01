@@ -1,9 +1,10 @@
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { NavLink, useLocation, useMatch } from 'react-router-dom';
+import { NavLink, useLocation, useMatch, useNavigate } from 'react-router-dom';
 import styles from './app-header.module.css';
 import NavItem from './nav-item/nav-item';
 
 const AppHeader = () => {
+	const navigate = useNavigate();
 	const location = useLocation();
 	const isIngredientPage = useMatch('/ingredients/:id');
 
@@ -17,6 +18,10 @@ const AppHeader = () => {
 	const isConstructorActive = basePath === '/';
 	const isFeedActive = basePath === '/feed';
 	const isProfileActive = basePath.startsWith('/profile');
+
+	const handleLogoClick = () => {
+		navigate('/');
+	};
 
 	return (
 		<header className={`${styles.header} pt-4 pb-4`}>
@@ -39,7 +44,7 @@ const AppHeader = () => {
 						</NavLink>
 					</div>
 
-					<div className={styles.logo}>
+					<div className={styles.logo} onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
 						<Logo />
 					</div>
 
