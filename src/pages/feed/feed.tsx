@@ -2,15 +2,14 @@ import React, { useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './feed.module.css';
 import { useFeedWebSocket } from '../../hooks/use-web-socket';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../services/store';
 import { serializeOrder } from '../../utils/orderUtils';
+import {useAppSelector} from "../../hooks/redux";
 
 const FeedPage: React.FC = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { orders, total, totalToday, loading, error, wsConnected } = useFeedWebSocket();
-	const ingredients = useSelector((state: RootState) => state.ingredients.items);
+	const ingredients = useAppSelector(state => state.ingredients.items);
 
 	const handleOrderClick = (order: any) => {
 		const serializedOrder = serializeOrder(order);

@@ -1,11 +1,10 @@
 import React from 'react';
 import { CheckMarkIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './order-details.module.css';
-import {useSelector} from "react-redux";
-import { RootState } from '../../services/store';
+import {useAppSelector} from "../../hooks/redux";
 
 const OrderDetails = () => {
-	const { number: orderNumber } = useSelector((state: RootState) => state.order);
+	const { number: orderNumber } = useAppSelector(state => state.order);
 
 	return (
 		<div className={styles.container}>

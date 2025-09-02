@@ -2,19 +2,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useForm } from '../../hooks/use-form';
 import { forgotPassword } from '../../services/auth/slice';
-import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
 import styles from './forgot-password.module.css';
-import {AppDispatch, RootState} from '../../services/store';
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 
 interface FormValues {
 	email: string;
 }
 
 const ForgotPasswordPage = () => {
-	const dispatch = useDispatch<AppDispatch>();
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const { loading, error, passwordResetRequested } = useSelector((state: RootState) => state.auth);
+	const { loading, error, passwordResetRequested } = useAppSelector(state => state.auth);
 	const { values, handleChange } = useForm<FormValues>({ email: '' });
 
 	const handleSubmit = (e: React.FormEvent) => {

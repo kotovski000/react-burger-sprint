@@ -2,10 +2,9 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useForm } from '../../hooks/use-form';
 import { loginUser } from '../../services/auth/slice';
-import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import styles from './login.module.css';
-import {AppDispatch, RootState} from '../../services/store';
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 
 interface FormValues {
 	email: string;
@@ -13,10 +12,10 @@ interface FormValues {
 }
 
 const LoginPage = () => {
-	const dispatch = useDispatch<AppDispatch>();
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { user, loading, error } = useSelector((state: RootState) => state.auth);
+	const { user, loading, error } = useAppSelector(state => state.auth);
 	const { values, handleChange } = useForm<FormValues>({ email: '', password: '' });
 	const [showPassword, setShowPassword] = useState(false);
 

@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styles from './ingredient-details.module.css';
 import { setIngredientDetails, clearIngredientDetails } from '../../services/ingredient-details/slice';
-import { RootState } from '../../services/store';
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 
 const IngredientDetails = () => {
-	const dispatch = useDispatch();
-	const { items: ingredients } = useSelector((state: RootState) => state.ingredients);
-	const { item: ingredient } = useSelector((state: RootState) => state.ingredientDetails);
+	const dispatch = useAppDispatch();
+	const { items: ingredients } = useAppSelector(state => state.ingredients);
+	const { item: ingredient } = useAppSelector(state => state.ingredientDetails);
 	const { id } = useParams<{ id: string }>();
 
 	useEffect(() => {

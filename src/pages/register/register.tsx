@@ -2,10 +2,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useForm } from '../../hooks/use-form';
 import { registerUser } from '../../services/auth/slice';
-import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import styles from './register.module.css';
-import {AppDispatch, RootState} from '../../services/store';
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 
 interface FormValues {
 	name: string;
@@ -14,9 +13,9 @@ interface FormValues {
 }
 
 const RegisterPage = () => {
-	const dispatch = useDispatch<AppDispatch>();
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const { user, loading, error } = useSelector((state: RootState) => state.auth);
+	const { user, loading, error } = useAppSelector(state => state.auth);
 	const { values, handleChange } = useForm<FormValues>({
 		name: '',
 		email: '',

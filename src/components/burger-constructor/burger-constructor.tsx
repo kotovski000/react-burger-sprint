@@ -1,5 +1,4 @@
 import React, { useMemo, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useDrop, useDrag } from 'react-dnd';
 import {
 	ConstructorElement,
@@ -17,7 +16,7 @@ import {
 import { createOrder } from '../../services/order/slice';
 import {useLocation, useNavigate} from "react-router-dom";
 import { Ingredient } from '../../utils/types';
-import {AppDispatch, RootState} from '../../services/store';
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 
 interface DraggableConstructorElementProps {
 	item: Ingredient & { id: string };
@@ -84,14 +83,14 @@ const DraggableConstructorElement = ({ item, index, moveCard, onRemove }: Dragga
 };
 
 const BurgerConstructor = () => {
-	const dispatch = useDispatch<AppDispatch>();
-	const { bun, ingredients } = useSelector((state: RootState) => state.burgerConstructor);
-	const { loading: orderLoading } = useSelector((state: RootState) => state.order);
-	const { items: allIngredients } = useSelector((state: RootState) => state.ingredients);
+	const dispatch = useAppDispatch();
+	const { bun, ingredients } = useAppSelector(state => state.burgerConstructor);
+	const { loading: orderLoading } = useAppSelector(state => state.order);
+	const { items: allIngredients } = useAppSelector(state => state.ingredients);
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	const { isAuthChecked, accessToken } = useSelector((state: RootState) => state.auth);
+	const { isAuthChecked, accessToken } = useAppSelector(state => state.auth);
 
 	const [, dropTarget] = useDrop({
 		accept: ItemTypes.INGREDIENT,

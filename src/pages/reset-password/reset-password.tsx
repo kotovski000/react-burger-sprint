@@ -2,10 +2,9 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useForm } from '../../hooks/use-form';
 import { resetPassword } from '../../services/auth/slice';
-import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import styles from './reset-password.module.css';
-import {AppDispatch, RootState} from '../../services/store';
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 
 interface FormValues {
 	password: string;
@@ -13,10 +12,10 @@ interface FormValues {
 }
 
 const ResetPasswordPage = () => {
-	const dispatch = useDispatch<AppDispatch>();
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { loading, error, passwordReset } = useSelector((state: RootState) => state.auth);
+	const { loading, error, passwordReset } = useAppSelector(state => state.auth);
 	const { values, handleChange } = useForm<FormValues>({
 		password: '',
 		token: ''
