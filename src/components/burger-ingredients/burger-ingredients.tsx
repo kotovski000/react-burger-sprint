@@ -1,10 +1,9 @@
 import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import IngredientCard from './ingredient-card';
 import styles from './burger-ingredients.module.css';
 import { Ingredient } from '../../utils/types';
-import { RootState } from '../../services/store';
+import {useAppSelector} from "../../hooks/redux";
 
 interface BurgerIngredientsProps {
 	onIngredientClick: (ingredient: Ingredient) => void;
@@ -28,9 +27,9 @@ const BurgerIngredients = ({ onIngredientClick }: BurgerIngredientsProps) => {
 	const [currentTab, setCurrentTab] = useState<IngredientType>('bun');
 	const containerRef = useRef<HTMLDivElement>(null);
 
-	const { items: ingredients } = useSelector((state: RootState) => state.ingredients);
-	const { bun, ingredients: constructorIngredients } = useSelector(
-		(state: RootState) => state.burgerConstructor
+	const { items: ingredients } = useAppSelector(state => state.ingredients);
+	const { bun, ingredients: constructorIngredients } = useAppSelector(
+		state => state.burgerConstructor
 	);
 
 	const tabsRef = useRef<TabRefs>({

@@ -67,9 +67,7 @@ export interface IngredientsResponse {
 export interface OrderResponse {
 	success: boolean;
 	name: string;
-	order: {
-		number: number;
-	};
+	order: Order;
 }
 
 export interface PasswordResetResponse {
@@ -79,4 +77,21 @@ export interface PasswordResetResponse {
 
 export interface ConstructorIngredient extends Ingredient {
 	id: string;
+}
+
+export interface Orders {
+	_id: string;
+	ingredients: string[];
+	status: 'created' | 'pending' | 'done';
+	name: string;
+	createdAt: string;
+	updatedAt: string;
+	number: number;
+}
+
+export interface OrderFeedMessage {
+	success: boolean;
+	orders: Orders[];
+	total: number;
+	totalToday: number;
 }

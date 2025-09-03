@@ -6,39 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5cdfa1bb-d4f4-4be4-85c4-546ea9914183" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-header/app-header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/app-header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-header/nav-item/nav-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-header/nav-item/nav-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/ingredient-card.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/ingredient-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ingredient-details/ingredient-details.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ingredient-details/ingredient-details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal-overlay/modal-overlay.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal-overlay/modal-overlay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order-details/order-details.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order-details/order-details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/protected-route-element/protected-route-element.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/protected-route-element/protected-route-element.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/forgot-password/forgot-password.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/forgot-password/forgot-password.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingredient-details/ingredient-details.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingredient-details/ingredient-details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile/profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/register/register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/register/register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/reset-password/reset-password.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/reset-password/reset-password.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth/slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/constructor/slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/constructor/slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/ingredient-details/slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ingredient-details/slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/ingredients/slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ingredients/slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/order/slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/order/slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/data.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/dnd-types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dnd-types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-constructor/burger-constructor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/forgot-password/forgot-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/forgot-password/forgot-password.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile-orders/profile-orders.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile-orders/profile-orders.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/register/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/register/register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/reset-password/reset-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/reset-password/reset-password.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sprint-3/step-1" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,23 +44,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "sprint-4/step-1",
-    "last_opened_file_path": "C:/Users/dkoto/Desktop/react-burger-sprint1/src/services/view",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.start.executor": "Run",
-    "ts.external.directory.path": "C:\\Users\\dkoto\\Desktop\\react-burger-sprint\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sprint-5/step-1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dkoto/Desktop/react-burger-sprint1/src/services/view&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/dkotov/Desktop/react-burger-sprint/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\dkoto\Desktop\react-burger-sprint1\src\services\view" />
@@ -95,6 +69,7 @@
       <recent name="C:\Users\dkoto\Desktop\react-burger-sprint1\src\services\modal" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/services/websocket" />
       <recent name="C:\Users\dkoto\Desktop\FrontEnd\React-разработчик\Спринт I. Основы React\Проект\react-burger\src\components\app-header" />
       <recent name="C:\Users\dkoto\Desktop\FrontEnd\React-разработчик\Спринт I. Основы React\Проект\react-burger\src\components\App" />
       <recent name="C:\Users\dkoto\Desktop\react-burger\src\components\burger-ingredients" />
@@ -115,13 +90,14 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26574.96" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-WS-252.23892.411" />
       </set>
     </attachedChunks>
   </component>
@@ -141,6 +117,11 @@
       <workItem from="1751291105114" duration="884000" />
       <workItem from="1751749999517" duration="1830000" />
       <workItem from="1751805732826" duration="1537000" />
+      <workItem from="1756118277259" duration="842000" />
+      <workItem from="1756208540745" duration="2652000" />
+      <workItem from="1756709690089" duration="658000" />
+      <workItem from="1756720652537" duration="7431000" />
+      <workItem from="1756828953303" duration="3646000" />
     </task>
     <servers />
   </component>
