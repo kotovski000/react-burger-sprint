@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cdfa1bb-d4f4-4be4-85c4-546ea9914183" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/burger-ingredients/burger-ingredients.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/downloads/downloads.html" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/downloads/downloads.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/fixtures/login.json" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/fixtures/login.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/fixtures/user.json" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/fixtures/user.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/support/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/support/commands.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/support/e2e.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/support/e2e.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +139,7 @@
       <workItem from="1757067585385" duration="924000" />
       <workItem from="1757081324325" duration="1000" />
       <workItem from="1757146443707" duration="5028000" />
-      <workItem from="1757151495521" duration="6119000" />
+      <workItem from="1757151495521" duration="6434000" />
     </task>
     <servers />
   </component>
