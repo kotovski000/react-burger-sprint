@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Orders } from '../../utils/types';
 
-interface OrdersState {
+export interface OrdersState {
 	feedOrders: Orders[];
 	profileOrders: Orders[];
 	total: number;

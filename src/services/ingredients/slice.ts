@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { request } from '../../utils/api';
 import {Ingredient, IngredientsResponse} from '../../utils/types';
 
-interface IngredientsState {
+export interface IngredientsState {
 	items: Ingredient[];
 	loading: boolean;
 	error: string | null;
@@ -42,8 +42,9 @@ const ingredientsSlice = createSlice({
 			})
 			.addCase(fetchIngredients.rejected, (state, action) => {
 				state.loading = false;
-				state.error = action.payload as string;
+				state.error = action.payload as string || action.error.message || 'Failed';
 			});
+
 	}
 });
 

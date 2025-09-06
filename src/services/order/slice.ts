@@ -3,7 +3,7 @@ import { request } from '../../utils/api';
 import { RootState } from '../store';
 import {OrderResponse} from "../../utils/types";
 
-interface OrderState {
+export interface OrderState {
 	number: number | null;
 	loading: boolean;
 	error: string | null;
@@ -58,8 +58,9 @@ const orderSlice = createSlice({
 			})
 			.addCase(createOrder.rejected, (state, action) => {
 				state.loading = false;
-				state.error = action.payload as string;
+				state.error = action.payload as string || action.error.message || 'Failed';
 			});
+
 	}
 });
 

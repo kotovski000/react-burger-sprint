@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { api } from '../../utils/api';
 import { AuthResponse, User, PasswordResetResponse } from '../../utils/types';
 
-interface AuthState {
+export interface AuthState {
 	user: User | null;
 	accessToken: string | null;
 	refreshToken: string | null;

@@ -1,7 +1,7 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 import { Ingredient, ConstructorIngredient } from '../../utils/types';
 
-interface ConstructorState {
+export interface ConstructorState {
 	bun: Ingredient | null;
 	ingredients: ConstructorIngredient[];
 }
@@ -42,6 +42,13 @@ const constructorSlice = createSlice({
 			action: PayloadAction<{ dragIndex: number; hoverIndex: number }>
 		) => {
 			const { dragIndex, hoverIndex } = action.payload;
+
+			if (state.ingredients.length === 0 ||
+				dragIndex < 0 || dragIndex >= state.ingredients.length ||
+				hoverIndex < 0 || hoverIndex >= state.ingredients.length) {
+				return;
+			}
+
 			const dragItem = state.ingredients[dragIndex];
 			state.ingredients.splice(dragIndex, 1);
 			state.ingredients.splice(hoverIndex, 0, dragItem);
