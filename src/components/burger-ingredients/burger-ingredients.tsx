@@ -114,6 +114,8 @@ const BurgerIngredients = ({ onIngredientClick }: BurgerIngredientsProps) => {
 						value={type}
 						active={currentTab === type}
 						onClick={() => handleTabClick(type)}
+						data-active={currentTab === type}
+						data-testid={`tab-${type}`}
 					>
 						{title}
 					</Tab>

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Orders } from '../../utils/types';
 
-interface OrdersState {
+export interface OrdersState {
 	feedOrders: Orders[];
 	profileOrders: Orders[];
 	total: number;
@@ -11,7 +11,7 @@ interface OrdersState {
 	wsConnected: boolean;
 }
 
-const initialState: OrdersState = {
+export const initialState: OrdersState = {
 	feedOrders: [],
 	profileOrders: [],
 	total: 0,

@@ -6,7 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="5cdfa1bb-d4f4-4be4-85c4-546ea9914183" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/constructor.cy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/constructor.cy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/support/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/support/commands.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth/slice.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/slice.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/constructor/slice.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/constructor/slice.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/constructor/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/constructor/slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ingredient-details/slice.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ingredient-details/slice.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ingredient-details/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ingredient-details/slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ingredients/slice.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ingredients/slice.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ingredients/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ingredients/slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/order/slice.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/order/slice.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/order/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/order/slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/websocket/slice.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/websocket/slice.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/websocket/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/websocket/slice.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +42,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -40,17 +56,21 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Jest.slice.test.ts (1).executor&quot;: &quot;Run&quot;,
+    &quot;Jest.slice.test.ts.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sprint-6/step-1&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/dkoto/Desktop/react-burger-sprint1/src/services/view&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/dkotov/Desktop/react-burger-sprint/node_modules/react-scripts&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/dkotov/Desktop/react-burger-sprint/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -119,10 +139,24 @@
       <workItem from="1757065940236" duration="1252000" />
       <workItem from="1757067585385" duration="924000" />
       <workItem from="1757081324325" duration="1000" />
+      <workItem from="1757146443707" duration="5028000" />
+      <workItem from="1757151495521" duration="7278000" />
+      <workItem from="1757318394729" duration="1706000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
