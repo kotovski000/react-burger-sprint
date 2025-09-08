@@ -3,14 +3,11 @@ import constructorReducer, {
 	removeIngredient,
 	moveIngredient,
 	clearConstructor,
+	initialState,
 	ConstructorState
 } from './slice';
 import { Ingredient, ConstructorIngredient } from '../../utils/types';
 
-const initialState: ConstructorState = {
-	bun: null,
-	ingredients: []
-};
 
 const baseBun: Ingredient = {
 	_id: '1',
@@ -155,11 +152,9 @@ describe('constructor reducer', () => {
 		const firstBun: Ingredient = { ...baseBun, _id: 'bun1', name: 'First Bun' };
 		const secondBun: Ingredient = { ...baseBun, _id: 'bun2', name: 'Second Bun' };
 
-		// Добавляем первую булку
 		let state = constructorReducer(initialState, addIngredient(firstBun));
 		expect(state.bun?.name).toBe('First Bun');
 
-		// Добавляем вторую булку - должна заменить первую
 		state = constructorReducer(state, addIngredient(secondBun));
 		expect(state.bun?.name).toBe('Second Bun');
 		expect(state.ingredients).toHaveLength(0);

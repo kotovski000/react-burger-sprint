@@ -5,19 +5,10 @@ import ordersReducer, {
 	wsConnectionClosed,
 	wsGetMessage,
 	clearOrders,
-	OrdersState
+	OrdersState,
+	initialState
 } from './slice';
 import { Orders } from '../../utils/types';
-
-const initialState: OrdersState = {
-	feedOrders: [],
-	profileOrders: [],
-	total: 0,
-	totalToday: 0,
-	loading: false,
-	error: null,
-	wsConnected: false
-};
 
 const mockOrders: Orders[] = [
 	{
@@ -130,7 +121,7 @@ describe('orders reducer', () => {
 
 	it('should filter invalid orders in wsGetMessage', () => {
 		const invalidOrders = [
-			{ _id: '1', name: 'Valid' } as any, // Неполный объект
+			{ _id: '1', name: 'Valid' } as any,
 			...mockOrders
 		];
 

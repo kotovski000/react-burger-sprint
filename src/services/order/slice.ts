@@ -31,7 +31,7 @@ export const createOrder = createAsyncThunk(
 	}
 );
 
-const initialState: OrderState = {
+export const initialState: OrderState = {
 	number: null,
 	loading: false,
 	error: null

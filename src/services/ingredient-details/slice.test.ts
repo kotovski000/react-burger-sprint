@@ -1,13 +1,9 @@
 import ingredientDetailsReducer, {
 	setIngredientDetails,
 	clearIngredientDetails,
-	IngredientDetailsState
+	initialState
 } from './slice';
 import { Ingredient } from '../../utils/types';
-
-const initialState: IngredientDetailsState = {
-	item: null
-};
 
 const mockIngredient: Ingredient = {
 	_id: '1',

@@ -11,7 +11,7 @@ export interface OrdersState {
 	wsConnected: boolean;
 }
 
-const initialState: OrdersState = {
+export const initialState: OrdersState = {
 	feedOrders: [],
 	profileOrders: [],
 	total: 0,

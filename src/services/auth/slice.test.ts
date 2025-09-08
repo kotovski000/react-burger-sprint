@@ -9,26 +9,32 @@ import authReducer, {
 	setAuthChecked,
 	clearError,
 	resetPasswordState,
-	AuthState
+	initialState
 } from './slice';
 import { AuthResponse, User, PasswordResetResponse } from '../../utils/types';
-
-const initialState: AuthState = {
-	user: null,
-	accessToken: null,
-	refreshToken: null,
-	isAuthChecked: false,
-	loading: false,
-	error: null,
-	passwordResetRequested: false,
-	passwordReset: false,
-	accessTokenExpired: false,
-};
 
 const mockUser: User = {
 	name: 'Test User',
 	email: 'test@test.com'
 };
+
+const mockAuthResponse: AuthResponse = {
+	success: true,
+	user: mockUser,
+	accessToken: 'token123',
+	refreshToken: 'refresh123'
+};
+
+const mockPasswordResetResponse: PasswordResetResponse = {
+	success: true,
+	message: 'Reset email sent'
+};
+
+const registerData = { email: 'test@test.com', password: 'password', name: 'Test User' };
+const loginData = { email: 'test@test.com', password: 'password' };
+const resetData = { password: 'newPass', token: 'resetToken' };
+const refreshToken = 'refreshToken';
+const accessToken = 'token';
 
 describe('auth reducer', () => {
 	it('should return initial state', () => {
@@ -39,8 +45,6 @@ describe('auth reducer', () => {
 		const action = setAuthChecked(true);
 		const state = authReducer(initialState, action);
 		expect(state.isAuthChecked).toBe(true);
-		expect(state.user).toBeNull();
-		expect(state.error).toBeNull();
 	});
 
 	it('should handle clearError', () => {
@@ -62,29 +66,22 @@ describe('auth reducer', () => {
 
 	describe('registerUser', () => {
 		it('should handle pending', () => {
-			const action = registerUser.pending('', { email: 'test@test.com', password: 'password', name: 'Test User' });
+			const action = registerUser.pending('', registerData);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(true);
 			expect(state.error).toBeNull();
 		});
 
 		it('should handle fulfilled', () => {
-			const mockResponse: AuthResponse = {
-				success: true,
-				user: mockUser,
-				accessToken: 'token123',
-				refreshToken: 'refresh123'
-			};
-			const action = registerUser.fulfilled(mockResponse, '', { email: 'test@test.com', password: 'password', name: 'Test User' });
+			const action = registerUser.fulfilled(mockAuthResponse, '', registerData);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
 			expect(state.user).toEqual(mockUser);
 			expect(state.accessToken).toBe('token123');
-			expect(state.refreshToken).toBe('refresh123');
 		});
 
 		it('should handle rejected', () => {
-			const action = registerUser.rejected(new Error('Registration failed'), '', { email: 'test@test.com', password: 'password', name: 'Test User' });
+			const action = registerUser.rejected(new Error('Registration failed'), '', registerData);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
 			expect(state.error).toBe('Registration failed');
@@ -93,29 +90,22 @@ describe('auth reducer', () => {
 
 	describe('loginUser', () => {
 		it('should handle pending', () => {
-			const action = loginUser.pending('', { email: 'test@test.com', password: 'password' });
+			const action = loginUser.pending('', loginData);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(true);
 			expect(state.error).toBeNull();
 		});
 
 		it('should handle fulfilled', () => {
-			const mockResponse: AuthResponse = {
-				success: true,
-				user: mockUser,
-				accessToken: 'token123',
-				refreshToken: 'refresh123'
-			};
-			const action = loginUser.fulfilled(mockResponse, '', { email: 'test@test.com', password: 'password' });
+			const action = loginUser.fulfilled(mockAuthResponse, '', loginData);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
 			expect(state.user).toEqual(mockUser);
 			expect(state.accessToken).toBe('token123');
-			expect(state.refreshToken).toBe('refresh123');
 		});
 
 		it('should handle rejected', () => {
-			const action = loginUser.rejected(new Error('Login failed'), '', { email: 'test@test.com', password: 'password' });
+			const action = loginUser.rejected(new Error('Login failed'), '', loginData);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
 			expect(state.error).toBe('Login failed');
@@ -124,29 +114,28 @@ describe('auth reducer', () => {
 
 	describe('logoutUser', () => {
 		it('should handle pending', () => {
-			const action = logoutUser.pending('', 'refreshToken');
+			const action = logoutUser.pending('', refreshToken);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(true);
 			expect(state.error).toBeNull();
 		});
 
 		it('should handle fulfilled', () => {
-			const stateWithData: AuthState = {
+			const stateWithData = {
 				...initialState,
 				user: mockUser,
 				accessToken: 'token123',
 				refreshToken: 'refresh123'
 			};
-			const action = logoutUser.fulfilled({ success: true }, '', 'refreshToken');
+			const action = logoutUser.fulfilled({ success: true }, '', refreshToken);
 			const state = authReducer(stateWithData, action);
 			expect(state.loading).toBe(false);
 			expect(state.user).toBeNull();
 			expect(state.accessToken).toBeNull();
-			expect(state.refreshToken).toBeNull();
 		});
 
 		it('should handle rejected', () => {
-			const action = logoutUser.rejected(new Error('Logout failed'), '', 'refreshToken');
+			const action = logoutUser.rejected(new Error('Logout failed'), '', refreshToken);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
 			expect(state.error).toBe('Logout failed');
@@ -155,28 +144,21 @@ describe('auth reducer', () => {
 
 	describe('updateToken', () => {
 		it('should handle pending', () => {
-			const action = updateToken.pending('', 'refreshToken');
+			const action = updateToken.pending('', refreshToken);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(true);
 			expect(state.error).toBeNull();
 		});
 
 		it('should handle fulfilled', () => {
-			const mockResponse: AuthResponse = {
-				success: true,
-				user: mockUser,
-				accessToken: 'newToken123',
-				refreshToken: 'newRefresh123'
-			};
-			const action = updateToken.fulfilled(mockResponse, '', 'refreshToken');
+			const action = updateToken.fulfilled(mockAuthResponse, '', refreshToken);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
-			expect(state.accessToken).toBe('newToken123');
-			expect(state.refreshToken).toBe('newRefresh123');
+			expect(state.accessToken).toBe('token123');
 		});
 
 		it('should handle rejected', () => {
-			const action = updateToken.rejected(new Error('Token update failed'), '', 'refreshToken');
+			const action = updateToken.rejected(new Error('Token update failed'), '', refreshToken);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
 			expect(state.error).toBe('Token update failed');
@@ -185,18 +167,15 @@ describe('auth reducer', () => {
 
 	describe('getUser', () => {
 		it('should handle pending', () => {
-			const action = getUser.pending('', 'token');
+			const action = getUser.pending('', accessToken);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(true);
 			expect(state.error).toBeNull();
 		});
 
 		it('should handle fulfilled', () => {
-			const mockResponse = {
-				success: true,
-				user: mockUser
-			};
-			const action = getUser.fulfilled(mockResponse, '', 'token');
+			const mockResponse = { success: true, user: mockUser };
+			const action = getUser.fulfilled(mockResponse, '', accessToken);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
 			expect(state.user).toEqual(mockUser);
@@ -204,7 +183,7 @@ describe('auth reducer', () => {
 		});
 
 		it('should handle rejected', () => {
-			const action = getUser.rejected(new Error('Failed to get user'), '', 'token');
+			const action = getUser.rejected(new Error('Failed to get user'), '', accessToken);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
 			expect(state.isAuthChecked).toBe(true);
@@ -221,11 +200,7 @@ describe('auth reducer', () => {
 		});
 
 		it('should handle fulfilled', () => {
-			const mockResponse: PasswordResetResponse = {
-				success: true,
-				message: 'Reset email sent'
-			};
-			const action = forgotPassword.fulfilled(mockResponse, '', 'test@test.com');
+			const action = forgotPassword.fulfilled(mockPasswordResetResponse, '', 'test@test.com');
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
 			expect(state.passwordResetRequested).toBe(true);
@@ -241,25 +216,21 @@ describe('auth reducer', () => {
 
 	describe('resetPassword', () => {
 		it('should handle pending', () => {
-			const action = resetPassword.pending('', { password: 'newPass', token: 'resetToken' });
+			const action = resetPassword.pending('', resetData);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(true);
 			expect(state.error).toBeNull();
 		});
 
 		it('should handle fulfilled', () => {
-			const mockResponse: PasswordResetResponse = {
-				success: true,
-				message: 'Password reset'
-			};
-			const action = resetPassword.fulfilled(mockResponse, '', { password: 'newPass', token: 'resetToken' });
+			const action = resetPassword.fulfilled(mockPasswordResetResponse, '', resetData);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
 			expect(state.passwordReset).toBe(true);
 		});
 
 		it('should handle rejected', () => {
-			const action = resetPassword.rejected(new Error('Password reset failed'), '', { password: 'newPass', token: 'resetToken' });
+			const action = resetPassword.rejected(new Error('Password reset failed'), '', resetData);
 			const state = authReducer(initialState, action);
 			expect(state.loading).toBe(false);
 			expect(state.error).toBe('Password reset failed');

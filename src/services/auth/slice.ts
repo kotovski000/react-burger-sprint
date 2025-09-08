@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { api } from '../../utils/api';
 import { AuthResponse, User, PasswordResetResponse } from '../../utils/types';
 
-export interface AuthState {
+interface AuthState {
 	user: User | null;
 	accessToken: string | null;
 	refreshToken: string | null;
@@ -79,7 +79,7 @@ export const resetPassword = createAsyncThunk(
 	}
 );
 
-const initialState: AuthState = {
+export const initialState: AuthState = {
 	user: null,
 	accessToken: null,
 	refreshToken: null,

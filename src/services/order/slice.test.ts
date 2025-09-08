@@ -1,10 +1,4 @@
-import orderReducer, { createOrder, clearOrder, OrderState } from './slice';
-
-const initialState: OrderState = {
-	number: null,
-	loading: false,
-	error: null
-};
+import orderReducer, { createOrder, clearOrder, OrderState, initialState } from './slice';
 
 describe('order reducer', () => {
 	it('should return initial state', () => {
